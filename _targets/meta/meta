@@ -1,7 +1,8 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|2e4dd1f586729794|||||||||||||||
-d_clean|stem|219367cdfbc93b23|8de8b712efd35bf1|51acb75e84f2fd4b|-796944167||t19939.1864381138s|c25e2675321573bf|46501|rds|local|vector|||1.282|1m22mUsing an external vector in selections was deprecated in tidyselect 1.1.0.36mℹ39m Please use all_of or any_of instead.   Was  data  selectcols_keep   Now  data  selectall_ofcols_keepSee httpstidyselect.rlib.orgreferencefaqexternalvector.html.|
-d_model|stem|a21f0dd99ba6ceb2|e63aa3c930115455|769868f85ce14d3a|655243799||t19939.1924975454s|44cd743d3ba66a41|59504|rds|local|vector|||2.547|Number of logged events 1|
+.Random.seed|object|365493de1f47aa85|||||||||||||||
+add_days_since_site_start|function|a4d6ae9f019e7aae|||||||||||||||
+d_clean|stem|19e10b3d849be917|8de8b712efd35bf1|28a53e18cfdfd406|-796944167||t19939.2123793304s|ad76ca6dd9e4517b|89242|rds|local|vector|||1.594|1m22mUsing an external vector in selections was deprecated in tidyselect 1.1.0.36mℹ39m Please use all_of or any_of instead.   Was  data  selectcols_keep   Now  data  selectall_ofcols_keepSee httpstidyselect.rlib.orgreferencefaqexternalvector.html.|
+d_model|stem|2a4c721ef95ad83c|e63aa3c930115455|c1e10423f541a742|655243799||t19939.2124310533s|7566f123dfd239f1|108818|rds|local|vector|||4.375|Number of logged events 1|
 d_raw|stem|3a96f56884a7c277|e75db89c67034f12|85734dfe11f0c4ea|-1739424631||t19939.1572549126s|d73c37cb749dea7b|1128557|rds|local|vector|||0.36||
 data|stem|a83fc9c2267b3838|e75db89c67034f12|46b3e7ed62f8c620|33550471||t19926.1686829296s|efc286144faf4afb|1539465|rds|local|vector|||0.39||
 data_file|stem|1855c4a4779ad74f|88ed5201186003d7|2c530c1562a7fbd1|-679625259|data/source-data-2.csv|t19939.1336386364s|f31180aa3e8dc434|4732196|file|local|vector|||0.812||
@@ -9,4 +10,4 @@ impute_missing_data|function|81a8f346c969af4c|||||||||||||||
 mice|function|3799bb645922aa23|||||||||||||||
 model|stem|065effc8e379efef|693e4c90d947b5eb|7a0e1980a8db4af1|808688450||t19926.1666974485s|809d88ef48c68ced|108|rds|local|vector|||0||
 read_data|function|acb56eb6375d12eb|||||||||||||||
-wrangle_data|function|aa60bbfd5951891e|||||||||||||||
+wrangle_data|function|c025a017b518ae83|||||||||||||||

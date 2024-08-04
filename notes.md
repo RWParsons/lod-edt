@@ -2,8 +2,7 @@
 
 L-U: replace unknown with No
 
-zerotroponin porbs most usefull for troponin
-
+zerotroponin probs most usefull for troponin
 
 CT:DA outpatient testing
  - or AN:AT

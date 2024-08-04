@@ -15,10 +15,15 @@ wrangle_data <- function(d_raw) {
   )
 
   cols_keep <- c(
+    "hos_los" = "hoslos",
+    "troponin" = "zero_trop",
     "pt_id" = "study_no",
     "presentation_no" = "presentation_number",
     "hospital_id" = "hospital",
-    "pt_age"
+    "pt_age",
+    "intervention",
+    "pt_sex" = "sex",
+    "days_since_site_start"
   )
 
   d_raw |>
@@ -30,5 +35,26 @@ wrangle_data <- function(d_raw) {
       pt_age = as.numeric(difftime(as.Date(arrival_date), as.Date(dob), units = "days")) / 365.25,
       admit_days_since_2019 = as.numeric(difftime(arrival_date, ymd("2019-01-01"), units = "days"))
     ) |>
-    select(cols_keep)
+    add_days_since_site_start() |>
+    select(cols_keep) |>
+    group_by(pt_id) |>
+    arrange(presentation_no) |>
+    fill(pt_age, pt_sex, .direction = "down") |>
+    ungroup() |>
+    arrange(pt_id, presentation_no)
+}
+
+
+add_days_since_site_start <- function(d) {
+  d_start_date_lkp <- d |>
+    filter(intervention == 1) |>
+    mutate(arrival_date = as.Date(arrival_date)) |>
+    select(hospital, intervention_start_dt = arrival_date) |>
+    slice_min(n = 1, order_by = intervention_start_dt, by = hospital, with_ties = FALSE)
+
+  d |>
+    left_join(d_start_date_lkp, by = "hospital") |>
+    mutate(
+      days_since_site_start = as.numeric(difftime(as.Date(arrival_date), intervention_start_dt, units = "days"))
+    )
 }
