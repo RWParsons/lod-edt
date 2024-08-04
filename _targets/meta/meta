@@ -1,5 +1,9 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|72c3e13bc1b7b8c8|||||||||||||||
+.Random.seed|object|86cc1fb6d7cba4f5|||||||||||||||
+d_model|stem|1603a9f7ccbd6d63|8de8b712efd35bf1|3e094522f0d5d27e|655243799||t19939.1723917887s|e98c36e44bea2fe9|23993|rds|local|vector|||1.5|1m22mUsing an external vector in selections was deprecated in tidyselect 1.1.0.36mℹ39m Please use all_of or any_of instead.   Was  data  selectcols_keep   Now  data  selectall_ofcols_keepSee httpstidyselect.rlib.orgreferencefaqexternalvector.html.|
+d_raw|stem|3a96f56884a7c277|e75db89c67034f12|85734dfe11f0c4ea|-1739424631||t19939.1572549126s|d73c37cb749dea7b|1128557|rds|local|vector|||0.36||
 data|stem|a83fc9c2267b3838|e75db89c67034f12|46b3e7ed62f8c620|33550471||t19926.1686829296s|efc286144faf4afb|1539465|rds|local|vector|||0.39||
-data_file|stem|1f018518ff6e47d6|76ae7269ff9e2a70|2c530c1562a7fbd1|-679625259|data/source-data.csv|t19926.1586253286s|9c490386f4f7a646|12054024|file|local|vector|||0.719||
+data_file|stem|1855c4a4779ad74f|88ed5201186003d7|2c530c1562a7fbd1|-679625259|data/source-data-2.csv|t19939.1336386364s|f31180aa3e8dc434|4732196|file|local|vector|||0.812||
 model|stem|065effc8e379efef|693e4c90d947b5eb|7a0e1980a8db4af1|808688450||t19926.1666974485s|809d88ef48c68ced|108|rds|local|vector|||0||
+read_data|function|acb56eb6375d12eb|||||||||||||||
+wrangle_data|function|43e67962f38092eb|||||||||||||||

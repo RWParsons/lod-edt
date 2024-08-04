@@ -13,10 +13,14 @@ tar_source()
 list(
   tar_file(
     data_file,
-    "data/source-data.csv"
+    "data/source-data-2.csv"
   ),
   tar_target(
-    data,
+    d_raw,
     read.csv(data_file)
+  ),
+  tar_target(
+    d_clean,
+    wrangle_data(d_raw)
   )
 )
