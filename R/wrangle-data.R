@@ -29,7 +29,8 @@ wrangle_data <- function(d_raw) {
     "pt_age",
     "pt_sex" = "sex",
     "intervention",
-    "days_since_site_start"
+    "days_since_site_start",
+    "admit_days_since_2019"
   )
 
   d_raw |>
@@ -48,7 +49,7 @@ wrangle_data <- function(d_raw) {
     fill(pt_age, sex, .direction = "down") |>
     ungroup() |>
     select(all_of(cols_keep)) |>
-    arrange(pt_id, presentation_no)
+    arrange(as.numeric(pt_id), presentation_no)
 }
 
 
