@@ -27,7 +27,8 @@ wrangle_data <- function(d_raw) {
     mutate(across(any_of(dttm_cols), ~ as.POSIXct(.x, format = "%d/%m/%Y %H:%M"))) |>
     mutate(across(any_of(dt_cols), ~ as.Date.character(.x, format = "%m/%d/%Y"))) |>
     mutate(
-      pt_age = as.numeric(difftime(as.Date(arrival_date), as.Date(dob), units = "days"))/ 365.25,
+      pt_age = as.numeric(difftime(as.Date(arrival_date), as.Date(dob), units = "days")) / 365.25,
       admit_days_since_2019 = as.numeric(difftime(arrival_date, ymd("2019-01-01"), units = "days"))
-    ) 
+    ) |>
+    select(cols_keep)
 }

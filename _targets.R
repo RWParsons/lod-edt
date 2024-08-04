@@ -22,5 +22,9 @@ list(
   tar_target(
     d_clean,
     wrangle_data(d_raw)
+  ),
+  tar_target(
+    d_model,
+    impute_missing_data(d_clean)
   )
 )
