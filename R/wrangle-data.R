@@ -29,27 +29,36 @@ wrangle_data <- function(d_raw) {
     "pt_age",
     "pt_sex" = "sex",
     "intervention",
+    "arrival_date",
     "days_since_site_start",
-    "admit_days_since_2019"
+    "admit_days_since_2019",
+    "ep_early_dsch_no_30d_event"
   )
 
-  d_raw |>
+  d <- d_raw |>
     janitor::clean_names() |>
     as_tibble() |>
-    mutate(across(any_of(dttm_cols), ~ as.POSIXct(.x, format = "%d/%m/%Y %H:%M"))) |>
+    mutate(across(any_of(dttm_cols), ~ as.POSIXct(.x, format = "%m/%d/%Y %H:%M"))) |>
     mutate(across(any_of(dt_cols), ~ as.Date.character(.x, format = "%m/%d/%Y"))) |>
     mutate(
+      # calculate dates
       pt_age = as.numeric(difftime(as.Date(arrival_date), as.Date(dob), units = "days")) / 365.25,
       admit_days_since_2019 = as.numeric(difftime(arrival_date, ymd("2019-01-01"), units = "days")),
-      across(all_of(cols_factors), as.character)
+      admit_days_since_first = as.numeric(difftime(arrival_date, index_arrival_date, units = "days")),
+
+      # convert grouping vars to character/factor and relevel some variables to be binary [0, 1] rather than [1, 2]
+      across(all_of(cols_factors), as.character),
+      intervention = intervention - 1,
+
+      # calculate endpoints
+      ep_early_dsch_no_30d_event = as.integer((thirty_day_endpoint == 0 | is.na(thirty_day_endpoint)) & hoslos <= 4)
     ) |>
     add_days_since_site_start() |>
     group_by(study_no) |>
     arrange(presentation_number) |>
     fill(pt_age, sex, .direction = "down") |>
     ungroup() |>
-    select(all_of(cols_keep)) |>
-    arrange(as.numeric(pt_id), presentation_no)
+    select(all_of(cols_keep))
 }
 
 

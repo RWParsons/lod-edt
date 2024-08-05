@@ -19,8 +19,19 @@ list(
     d_clean,
     wrangle_data(d_raw)
   ),
+  # tar_target(
+  #   d_model,
+  #   impute_missing_data(d_clean)
+  # ),
+
+
+
+  # primary endpoint
   tar_target(
-    d_model,
-    impute_missing_data(d_clean)
+    m_early_disch,
+    fit_model(
+      data = d_clean,
+      outcome = "ep_early_dsch_no_30d_event"
+    )
   )
 )
