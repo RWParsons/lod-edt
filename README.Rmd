@@ -1,0 +1,30 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# lod-edt
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+This repository contains the analyses code used for the LEGEND clinical trial.
+
+It uses a [`{targets}`](https://books.ropensci.org/targets/) workflow that 
+includes all model fitting, evaluation and generation of figures and tables
+presented in the (forthcoming) publication.
+
+
+## `{targets}` workflow
+
+```{r, results = "asis", echo = FALSE}
+cat(c("```mermaid", targets::tar_mermaid(targets_only = TRUE), "```"), sep = "\n")
+```
