@@ -10,8 +10,8 @@ This repository contains the analyses code used for the LEGEND clinical
 trial.
 
 It uses a [`{targets}`](https://books.ropensci.org/targets/) workflow
-that includes all model fitting, evaluation and generation of figures
-and tables presented in the (forthcoming) publication.
+that includes everything from data import to figures/tables used in the
+publication.
 
 ## `{targets}` workflow
 
