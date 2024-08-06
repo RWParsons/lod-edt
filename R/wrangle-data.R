@@ -14,16 +14,13 @@ wrangle_data <- function(d_raw) {
     "last_contact"
   )
 
-  cols_factors <- c(
-    "study_no",
-    "hospital",
-    "sex"
-  )
-
   cols_keep <- c(
-    "hos_los" = "hoslos",
+    "ep_hos_los" = "hoslos",
+    "ep_early_dsch_no_30d_event",
+    "ep_6month_readmission_n",
+    "ep_30d_event" = "thirtyevent",
     "troponin" = "zero_trop",
-    "pt_id" = "study_no",
+    "pt_id" = "studynumberunique",
     "presentation_no" = "presentation_number",
     "hospital_id" = "hospital",
     "pt_age",
@@ -31,13 +28,24 @@ wrangle_data <- function(d_raw) {
     "intervention",
     "arrival_date",
     "days_since_site_start",
-    "admit_days_since_2019",
-    "ep_early_dsch_no_30d_event"
+    "admit_days_since_2019"
+  )
+
+  cols_rename <- cols_keep[names(cols_keep) != ""]
+
+  cols_keep[names(cols_keep) != ""] <- names(cols_keep)[names(cols_keep) != ""]
+  cols_keep <- unname(cols_keep)
+
+  cols_factors <- c(
+    "pt_id",
+    "hospital_id",
+    "pt_sex"
   )
 
   d <- d_raw |>
     janitor::clean_names() |>
     as_tibble() |>
+    rename(all_of(cols_rename)) |>
     mutate(across(any_of(dttm_cols), ~ as.POSIXct(.x, format = "%m/%d/%Y %H:%M"))) |>
     mutate(across(any_of(dt_cols), ~ as.Date.character(.x, format = "%m/%d/%Y"))) |>
     mutate(
@@ -51,14 +59,30 @@ wrangle_data <- function(d_raw) {
       intervention = intervention - 1,
 
       # calculate endpoints
-      ep_early_dsch_no_30d_event = as.integer((thirty_day_endpoint == 0 | is.na(thirty_day_endpoint)) & hoslos <= 4)
+      ep_early_dsch_no_30d_event = as.integer((ep_30d_event == 0 | is.na(ep_30d_event)) & ep_hos_los <= 4)
     ) |>
     add_days_since_site_start() |>
-    group_by(study_no) |>
-    arrange(presentation_number) |>
-    fill(pt_age, sex, .direction = "down") |>
+    group_by(pt_id) |>
+    arrange(presentation_no) |>
+    fill(pt_age, pt_sex, .direction = "down") |>
     ungroup() |>
-    select(all_of(cols_keep))
+    # add ep_6month_readmission_n
+    mutate(ep_6month_readmission_n = NA_integer_) |>
+    group_by(pt_id) |>
+    group_split() |>
+    map(\(.x) {
+      if (.x$pt_id[1] == 1) browser()
+      n_readmissions <- .x |>
+        filter(arrival_date <= arrival_date + months(6)) |>
+        nrow() |>
+        (\(x) max(c(x - 1, 0)))()
+
+      .x$ep_6month_readmission_n[1] <- n_readmissions
+      .x
+    }) |>
+    bind_rows()
+
+  d |> select(all_of(cols_keep))
 }
 
 
@@ -66,11 +90,11 @@ add_days_since_site_start <- function(d) {
   d_start_date_lkp <- d |>
     filter(intervention == 1) |>
     mutate(arrival_date = as.Date(arrival_date)) |>
-    select(hospital, intervention_start_dt = arrival_date) |>
-    slice_min(n = 1, order_by = intervention_start_dt, by = hospital, with_ties = FALSE)
+    select(hospital_id, intervention_start_dt = arrival_date) |>
+    slice_min(n = 1, order_by = intervention_start_dt, by = hospital_id, with_ties = FALSE)
 
   d |>
-    left_join(d_start_date_lkp, by = "hospital") |>
+    left_join(d_start_date_lkp, by = "hospital_id") |>
     mutate(
       days_since_site_start = as.numeric(difftime(as.Date(arrival_date), intervention_start_dt, units = "days"))
     )
