@@ -1,12 +1,13 @@
 source("dependencies.R")
 
 tar_option_set(
-  controller = crew::crew_controller_local(workers = 2, seconds_idle = 60)
+  controller = crew::crew_controller_local(workers = 4, seconds_idle = 60)
 )
 
 tar_source()
 
 list(
+  # read and wrangle data
   tar_file(
     data_file,
     "data/source-data-2.csv"
@@ -19,19 +20,23 @@ list(
     d_clean,
     wrangle_data(d_raw)
   ),
-  # tar_target(
-  #   d_model,
-  #   impute_missing_data(d_clean)
-  # ),
 
-
-
-  # primary endpoint
+  # fit models
   tar_target(
-    m_early_disch,
+    endpoint_varnames,
+    str_subset(names(d_clean), "^ep_")
+  ),
+  tar_target(
+    models_iter,
     fit_model(
       data = d_clean,
-      outcome = "ep_early_dsch_no_30d_event"
-    )
+      outcome = endpoint_varnames[1]
+    ),
+    pattern = map(endpoint_varnames),
+    iteration = "list"
+  ),
+  tar_target(
+    models,
+    group_models(models_iter)
   )
 )
