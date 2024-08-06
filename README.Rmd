@@ -25,6 +25,12 @@ presented in the (forthcoming) publication.
 
 ## `{targets}` workflow
 
+```{r warning = 'FALSE', message='FALSE', results = "hide", echo=FALSE}
+workflow <- targets::tar_mermaid(targets_only = TRUE)
+```
+
 ```{r, results = "asis", echo = FALSE}
-cat(c("```mermaid", targets::tar_mermaid(targets_only = TRUE), "```"), sep = "\n")
+
+
+cat(c("```mermaid", workflow, "```"), sep = "\n")
 ```
