@@ -52,60 +52,6 @@
       ],
       "Hash": "8c7115cd3a0e048bda2a7cd110549f7a"
     },
-    "R.cache": {
-      "Package": "R.cache",
-      "Version": "0.16.0",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "R.methodsS3",
-        "R.oo",
-        "R.utils",
-        "digest",
-        "utils"
-      ],
-      "Hash": "fe539ca3f8efb7410c3ae2cf5fe6c0f8"
-    },
-    "R.methodsS3": {
-      "Package": "R.methodsS3",
-      "Version": "1.8.2",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "utils"
-      ],
-      "Hash": "278c286fd6e9e75d0c2e8f731ea445c8"
-    },
-    "R.oo": {
-      "Package": "R.oo",
-      "Version": "1.26.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "R.methodsS3",
-        "methods",
-        "utils"
-      ],
-      "Hash": "4fed809e53ddb5407b3da3d0f572e591"
-    },
-    "R.utils": {
-      "Package": "R.utils",
-      "Version": "2.12.3",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "R.methodsS3",
-        "R.oo",
-        "methods",
-        "tools",
-        "utils"
-      ],
-      "Hash": "3dc2829b790254bfba21e60965787651"
-    },
     "R6": {
       "Package": "R6",
       "Version": "2.5.1",
@@ -331,6 +277,18 @@
         "tibble"
       ],
       "Hash": "f61dbaec772ccd2e17705c1e872e9e7c"
+    },
+    "checkmate": {
+      "Package": "checkmate",
+      "Version": "2.3.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "backports",
+        "utils"
+      ],
+      "Hash": "0e14e01ce07e7c88fd25de6d4260d26b"
     },
     "cli": {
       "Package": "cli",
@@ -923,6 +881,19 @@
       ],
       "Hash": "c3b7d801d722e26e4cd888e042bf9af5"
     },
+    "insight": {
+      "Package": "insight",
+      "Version": "0.20.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "methods",
+        "stats",
+        "utils"
+      ],
+      "Hash": "74a0751aafb4d4bc140531e46deda4ab"
+    },
     "isoband": {
       "Package": "isoband",
       "Version": "0.2.7",
@@ -1116,6 +1087,25 @@
         "R"
       ],
       "Hash": "7ce2733a9826b3aeb1775d56fd305472"
+    },
+    "marginaleffects": {
+      "Package": "marginaleffects",
+      "Version": "0.21.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "Rcpp",
+        "RcppEigen",
+        "checkmate",
+        "data.table",
+        "generics",
+        "insight",
+        "methods",
+        "rlang",
+        "utils"
+      ],
+      "Hash": "ff81d0015a8b37d206b7fbaf8c888578"
     },
     "memoise": {
       "Package": "memoise",
@@ -1597,16 +1587,6 @@
       ],
       "Hash": "b3d390424f41d04174cccf84d49676c2"
     },
-    "rprojroot": {
-      "Package": "rprojroot",
-      "Version": "2.0.4",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R"
-      ],
-      "Hash": "4c8415e0ec1e29f3f4f6fc108bef0144"
-    },
     "rstudioapi": {
       "Package": "rstudioapi",
       "Version": "0.16.0",
@@ -1744,25 +1724,6 @@
         "vctrs"
       ],
       "Hash": "960e2ae9e09656611e0b8214ad543207"
-    },
-    "styler": {
-      "Package": "styler",
-      "Version": "1.10.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "R.cache",
-        "cli",
-        "magrittr",
-        "purrr",
-        "rlang",
-        "rprojroot",
-        "tools",
-        "vctrs",
-        "withr"
-      ],
-      "Hash": "93a2b1beac2437bdcc4724f8bf867e2c"
     },
     "survival": {
       "Package": "survival",

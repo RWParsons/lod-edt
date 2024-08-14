@@ -38,5 +38,9 @@ list(
   tar_target(
     models,
     group_models(models_iter)
+  ),
+  tar_target(
+    intervention_effects,
+    get_intervention_effects(models)
   )
 )
