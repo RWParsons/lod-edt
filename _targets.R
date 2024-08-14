@@ -42,5 +42,12 @@ list(
   tar_target(
     intervention_effects,
     get_intervention_effects(models)
+  ),
+  tar_target(
+    primary_ep_figure,
+    analyse_primary_ep(
+      models = models,
+      data = d_clean
+    )
   )
 )

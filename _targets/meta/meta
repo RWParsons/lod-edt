@@ -1,7 +1,7 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|77110c53d6bded5f|||||||||||||||
+.Random.seed|object|e549f155bd520feb|||||||||||||||
 add_days_since_site_start|function|a067b9762aa45794|||||||||||||||
-analyse_primary_ep|function|83f5c7a5aa63ef78|||||||||||||||
+analyse_primary_ep|function|5bb40fcf6ea12876|||||||||||||||
 bs|function|248c7f8909e45602|||||||||||||||
 d_clean|stem|b4ab08dbfea90f10|8de8b712efd35bf1|e6cafbe79dcd1f6a|-796944167||t19941.2124317966s|d0dc1c05a183e558|230210|rds|local|vector|||37.329||
 d_model|stem|97a249ba67b960f1|e63aa3c930115455|b2228d9eeebd34a0|655243799||t19939.229950122s||152514|rds|local|vector|||1.532||system is computationally singular reciprocal condition number  1.01793e23
@@ -27,7 +27,8 @@ models_iter_12f3b4f6b67b5669|branch|71cfd1f4b7295d8d|3229f33a5b49ae14|a38bd76a44
 models_iter_3bcdb6a9aebd7165|branch|6dd8f6b5656319a0|3229f33a5b49ae14|a38bd76a4420710e|133656555||t19941.2319581599s|d5e895b2df415b7e|3386708|rds|local|list|models_iter||10.954||
 models_iter_e628a91bca14d868|branch|7024dc474eca610f|3229f33a5b49ae14|a38bd76a4420710e|-1190086691||t19941.232471405s|b20eb562fff2b5a3|3238880|rds|local|list|models_iter||55.141||
 models_iter_f48c18d0e892f6f5|branch|58a4a271dcd9534a|3229f33a5b49ae14|a38bd76a4420710e|-464799103||t19941.2320307999s|42cd8b78d743d186|3186181|rds|local|list|models_iter||17.25||
-primary_ep_summary|stem|e77a28538e829a39|a63c0e7925e74691|2afd00086453a8ae|630511531||t19949.2234501083s|d21be8cf0dd771ce|44|rds|local|vector|||1.219||
+primary_ep_figure|stem|d2f9d855c664d078|08c93c575753b0dd|cc6d76f73438e75f|648139895||t19949.2661477706s|ff4ebe3de1469908|15447895|rds|local|vector|||1||
+primary_ep_summary|stem|decfb91c1b2ac5e4|08c93c575753b0dd|89fec6e00bccd96b|630511531||t19949.2632928056s|c5be4f54b5f2bc36|15130193|rds|local|vector|||1.078||
 read_data|function|acb56eb6375d12eb|||||||||||||||
 visualise_missingness|function|d4f8ca6c78a9f854|||||||||||||||
 wrangle_data|function|9f403bd2be82bc7b|||||||||||||||
