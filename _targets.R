@@ -49,5 +49,9 @@ list(
       models = models,
       data = d_clean
     )
+  ),
+  tar_target(
+    cardiac_assessments,
+    get_cardiac_ax_tbls(d_clean)
   )
 )
