@@ -29,7 +29,5 @@ workflow <- targets::tar_mermaid(targets_only = TRUE)
 ```
 
 ```{r, results = "asis", echo = FALSE}
-
-
 cat(c("```mermaid", workflow, "```"), sep = "\n")
 ```
