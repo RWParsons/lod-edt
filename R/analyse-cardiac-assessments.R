@@ -33,7 +33,7 @@ get_cardiac_table <- function(d_cardiac_tests) {
     group_by(intervention, cardiac_test) |> 
     summarize(n_perc = format_n_perc(n = sum(value), total = n())) |> 
     ungroup() |> 
-    mutate(intervention = ifelse(intervention == 1, "intervention_period", "non_internvetion_period")) |> 
+    mutate(intervention = ifelse(intervention == 1, "intervention_period", "non_intervention_period")) |> 
     pivot_wider(names_from = intervention, values_from = n_perc)
 }
 

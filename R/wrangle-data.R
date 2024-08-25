@@ -71,18 +71,22 @@ wrangle_data <- function(d_raw) {
     group_by(pt_id) |>
     group_split() |>
     map(\(.x) {
-      if (.x$pt_id[1] == 1) browser()
+      # if (.x$pt_id[1] == 1) browser()
       n_readmissions <- .x |>
-        filter(arrival_date <= arrival_date + months(6)) |>
+        filter(arrival_date <= index_arrival_date %m+% months(6)) |>
         nrow() |>
         (\(x) max(c(x - 1, 0)))()
 
-      .x$ep_6month_readmission_n[1] <- n_readmissions
+      .x$ep_6month_readmission_n <- n_readmissions
       .x
     }) |>
     bind_rows()
 
-  d |> select(all_of(cols_keep))
+  d |> select(
+    all_of(cols_keep),
+    est:mri,
+    outpatient_est:outpatient_mri
+  )
 }
 
 
