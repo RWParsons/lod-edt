@@ -44,14 +44,26 @@ list(
     get_intervention_effects(models)
   ),
   tar_target(
-    primary_ep_figure,
+    vis_hoslos,
     analyse_primary_ep(
       models = models,
       data = d_clean
     )
   ),
   tar_target(
-    cardiac_assessments,
+    tbl_cardiac_assessments,
     get_cardiac_ax_tbls(d_clean)
+  ),
+  tar_target(
+    vis_eq5d,
+    visualise_eq5d(d_clean)
+  ),
+  tar_target(
+    qnt_eq5d,
+    get_qnt_eq5d(d_clean)
+  ),
+  tar_target(
+    qnt_patient_experience,
+    get_qnt_patient_experience(d_clean)
   )
 )

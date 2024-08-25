@@ -85,7 +85,9 @@ wrangle_data <- function(d_raw) {
   d |> select(
     all_of(cols_keep),
     est:mri,
-    outpatient_est:outpatient_mri
+    outpatient_est:outpatient_mri,
+    matches("eq5d_[0-9]$"),
+    matches("experience_[0-9]$")
   )
 }
 
