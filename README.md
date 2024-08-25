@@ -26,19 +26,20 @@ graph LR
   end
   subgraph Graph
     direction LR
+    x13b8365dcba4324c(["d_clean"]):::uptodate --> xba17d3f584ce63ae(["vis_early_disch"]):::uptodate
     x56afa2603fe1d037(["d_raw"]):::uptodate --> x13b8365dcba4324c(["d_clean"]):::uptodate
     x0d01c84c9424364d(["data_file"]):::uptodate --> x56afa2603fe1d037(["d_raw"]):::uptodate
     xaca4bed467a54ff1(["models"]):::uptodate --> x1b37a08095af01ef(["tbl_intervention_effects"]):::uptodate
     x13b8365dcba4324c(["d_clean"]):::uptodate --> xb59898fadcdec69f(["vis_eq5d"]):::uptodate
-    x13b8365dcba4324c(["d_clean"]):::uptodate --> x404e05b222cbda9b(["vis_hoslos"]):::uptodate
-    xaca4bed467a54ff1(["models"]):::uptodate --> x404e05b222cbda9b(["vis_hoslos"]):::uptodate
     x5ba341b1daa1fc45["models_iter"]:::uptodate --> xaca4bed467a54ff1(["models"]):::uptodate
+    x13b8365dcba4324c(["d_clean"]):::uptodate --> xc531443711f0122d(["vis_hos_los"]):::uptodate
     x7eeef084d656455c(["qnt_eq5d"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
     xd979d4bdf1b06554(["qnt_patient_experience"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
     xa2439dbf9eab4d88(["tbl_cardiac_assessments"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
     x1b37a08095af01ef(["tbl_intervention_effects"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
+    xba17d3f584ce63ae(["vis_early_disch"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
     xb59898fadcdec69f(["vis_eq5d"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
-    x404e05b222cbda9b(["vis_hoslos"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
+    xc531443711f0122d(["vis_hos_los"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
     x13b8365dcba4324c(["d_clean"]):::uptodate --> x979e976bb4cbf5ad(["endpoint_varnames"]):::uptodate
     x13b8365dcba4324c(["d_clean"]):::uptodate --> x5ba341b1daa1fc45["models_iter"]:::uptodate
     x979e976bb4cbf5ad(["endpoint_varnames"]):::uptodate --> x5ba341b1daa1fc45["models_iter"]:::uptodate
