@@ -44,11 +44,12 @@ list(
     get_intervention_effects(models)
   ),
   tar_target(
-    vis_hoslos,
-    analyse_primary_ep(
-      models = models,
-      data = d_clean
-    )
+    vis_hos_los,
+    visualise_hos_los(d_clean)
+  ),
+  tar_target(
+    vis_early_disch,
+    visualise_early_disch(d_clean)
   ),
   tar_target(
     tbl_cardiac_assessments,
@@ -73,7 +74,8 @@ list(
       tbl_inpatient_cardiac_assessments = tbl_cardiac_assessments$inpatient_cardiac_events,
       tbl_outpatient_cardiac_assessments = tbl_cardiac_assessments$outpatient_cardiac_events,
       vis_eq5d = vis_eq5d,
-      vis_hoslos = vis_hoslos,
+      vis_hoslos = vis_hos_los,
+      vis_early_disch = vis_early_disch,
       qnt_eq5d = qnt_eq5d,
       qnt_patient_experience = qnt_patient_experience
     )

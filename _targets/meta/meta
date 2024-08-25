@@ -1,7 +1,7 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|5a71438624c96a35|||||||||||||||
+.Random.seed|object|c68d414758a14ac3|||||||||||||||
 add_days_since_site_start|function|a067b9762aa45794|||||||||||||||
-analyse_primary_ep|function|5bb40fcf6ea12876|||||||||||||||
+analyse_primary_ep|function|ac7eba803017375f|||||||||||||||
 bs|function|248c7f8909e45602|||||||||||||||
 d_clean|stem|78d4d093f5ab9322|8de8b712efd35bf1|0f8bc9d573fe2c12|-796944167||t19960.2689960236s|a2ec783eb5e26cd8|295188|rds|local|vector|||26.844||
 d_raw|stem|73af18cf2adad19e|e75db89c67034f12|f3a0d7b8b230566f|-1739424631||t19940.1651421279s|924b8a3a7f80465e|1127784|rds|local|vector|||0.343||
@@ -28,7 +28,7 @@ models_iter_12f3b4f6b67b5669|branch|57b174a3358ef9a3|3229f33a5b49ae14|80a36a63a7
 models_iter_3bcdb6a9aebd7165|branch|796c95796437b91a|3229f33a5b49ae14|80a36a63a7908112|133656555||t19960.2846666423s|04c4552fc31a096c|3562489|rds|local|list|models_iter||9.141||
 models_iter_e628a91bca14d868|branch|053c820fc902f2be|3229f33a5b49ae14|80a36a63a7908112|-1190086691||t19960.2850926259s|c3eb333223c5c51b|3355602|rds|local|list|models_iter||45.937||
 models_iter_f48c18d0e892f6f5|branch|0d5a8ff979d969a0|3229f33a5b49ae14|80a36a63a7908112|-464799103||t19960.284734325s|ca17219bca76baee|3298555|rds|local|list|models_iter||14.984||
-outputs|stem|e77a28538e829a39|9b1fca6e1024846d|679975d06d5f7ba7|-87300777||t19960.3121449776s|d21be8cf0dd771ce|44|rds|local|vector|||1.235||
+outputs|stem|e77a28538e829a39|a4cb2647f60957fb|aeaf8f4ad1f4b91b|-87300777||t19960.3200098826s|d21be8cf0dd771ce|44|rds|local|vector|||1.86||
 prep_eq5d_data|function|a148c2d08df71cc1|||||||||||||||
 qnt_eq5d|stem|f85695088c3e8dc4|60d31acd9ee6596f|6de51162c86f2190|169920332||t19960.2964165009s|922598d76622d54c|287|rds|local|vector|||2.438||
 qnt_patient_experience|stem|6fff6b248b8d082b|6555f10daebc53b6|84da8a186b631f74|1429088306||t19960.2882587281s|f0352d5549753066|216|rds|local|vector|||1.812||
@@ -39,8 +39,11 @@ save_tbl|function|c6b79c9ce5a57ca8|||||||||||||||
 store_outputs|function|16e1ae47b6b0f638|||||||||||||||
 tbl_cardiac_assessments|stem|17f7dcfc3823027e|b2dc486822dcf67b|d284494df504f05c|-104038283||t19960.3117043197s|d5a674b7f4dd0c5b|507|rds|local|vector|||3.016||
 tbl_intervention_effects|stem|86099201967485dd|20ec4da0d0fa4e6d|65719463ed0b0ed9|1548485281||t19960.2982175201s|6aafb1ac4eb25aac|4066887|rds|local|vector|||65.094||
+vis_early_disch|stem|817724c6ca84ba99|ceed1a1b2fefd60e|bbabb8aa0b31dc7b|-1987087722||t19960.3195148601s|19d91b2bfcdf11ce|1117085|rds|local|vector|||2.391||
 vis_eq5d|stem|79c01eb8cd295dc3|1d4841140a49e4ae|6bc05040f3e84998|1388869378||t19960.2964082357s|631378b596eb1d41|386642|rds|local|vector|||2.547||
-vis_hoslos|stem|0b91ab88295659a0|08c93c575753b0dd|346eaa99034446f0|-1125074418||t19960.2851733067s|bec8c3c52cf06248|16537843|rds|local|vector|||0.047||
+vis_hos_los|stem|ec3c1589e2f850d3|8f056ce47646e2e4|fdd19b8e5a101c9f|-785057180||t19960.319966109s|a0d1ca4f0ca2a2be|1053485|rds|local|vector|||2.609||
+visualise_early_disch|function|11e61987e532ec6c|||||||||||||||
 visualise_eq5d|function|cdb7bfc616c3055b|||||||||||||||
+visualise_hos_los|function|f9aa1b24229fc506|||||||||||||||
 visualise_missingness|function|d4f8ca6c78a9f854|||||||||||||||
 wrangle_data|function|10977b419a55a2bb|||||||||||||||
