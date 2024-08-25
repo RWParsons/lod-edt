@@ -39,5 +39,5 @@ get_cardiac_table <- function(d_cardiac_tests) {
 
 format_n_perc <- function(n, total) {
   f_perc <- scales::percent_format()
-  glue::glue("{n} / {total} ({f_perc(n / total)})")
+  glue("{n} / {total} ({f_perc(n / total)})")
 }

@@ -40,7 +40,7 @@ list(
     group_models(models_iter)
   ),
   tar_target(
-    intervention_effects,
+    tbl_intervention_effects,
     get_intervention_effects(models)
   ),
   tar_target(
@@ -65,5 +65,17 @@ list(
   tar_target(
     qnt_patient_experience,
     get_qnt_patient_experience(d_clean)
+  ),
+  tar_target(
+    outputs,
+    store_outputs(
+      tbl_intervention_effects = tbl_intervention_effects,
+      tbl_inpatient_cardiac_assessments = tbl_cardiac_assessments$inpatient_cardiac_events,
+      tbl_outpatient_cardiac_assessments = tbl_cardiac_assessments$outpatient_cardiac_events,
+      vis_eq5d = vis_eq5d,
+      vis_hoslos = vis_hoslos,
+      qnt_eq5d = qnt_eq5d,
+      qnt_patient_experience = qnt_patient_experience
+    )
   )
 )
