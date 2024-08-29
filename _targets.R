@@ -71,8 +71,7 @@ list(
     outputs,
     store_outputs(
       tbl_intervention_effects = tbl_intervention_effects,
-      tbl_inpatient_cardiac_assessments = tbl_cardiac_assessments$inpatient_cardiac_events,
-      tbl_outpatient_cardiac_assessments = tbl_cardiac_assessments$outpatient_cardiac_events,
+      tbl_cardiac_assessments = tbl_cardiac_assessments,
       vis_eq5d = vis_eq5d,
       vis_hoslos = vis_hos_los,
       vis_early_disch = vis_early_disch,

@@ -37,13 +37,21 @@ control variables:
 - Hospital length of stay, hospital representations and in-patient admissions over 6 months 
   - Hoslos, presentation_number, inpatientadmissions 
 
-
+inpatient admission column = whtehr they weent from ED to inpatietn
+  > no need for a separate inpatientadmissions ep
 
 - Downstream testing: Stress testing, echocardiography, coronary angiography, coronary CT angiography up to 6 months after presentation 
   - EST through to MRI, then Outpatient_est through to outpatient MRI 
   - The EST through to MRI could be in any of the index or representations  
 
   - We would need a composite plus a table with the individual tests.  
+
+  > no model
+  > table reporting each of them separately (EST:MRI)
+    > group_by(pt_id) |> recode outcomes as 1 if any in the next 6 months
+    > and another for if any test over the 6 months
+    > just used for descriptive comparison between interventiona dn non-intervention groups and counts of patients
+
 
 - Cost effectiveness: incorporating healthcare utilisation up to 6 months after presentation and health-related quality of life 
 
@@ -53,4 +61,22 @@ control variables:
 - Patient reported outcomes (quality of life) and patient experiences 6 months after presentation 
 
   - Experience_1 experience_2, eq5d_1 to eq5d_5 
+    > EQ5D gets summed together
+    > patient experience questions get reported separately
   - Just descriptives required I think! 
+
+
+### meeting on 29-08-24
+
+testing model
+- get rid of admit_days_since_2019 from model
+- try traditional interrupted time series model with linear effect of time since site start and interaction on `intervention` as a factor (try for primary outcomes first: hoslos and earlydisch_no30d_event); include some visualisation for interrupted time series too
+- investigate more flexible splines for the time since site start
+- double check coding of ep_6month_readmission_n
+
+repeat cardiac ax, eq5d, patient-experience tables for both inpatient and outpatient with the lod cohort 
+<!-- data_first_presentation_low_trop <- data |>
+    filter(
+      presentation_no == 1,
+      troponin <= troponin_lod
+    ) -->
