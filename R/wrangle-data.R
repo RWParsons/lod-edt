@@ -2,6 +2,7 @@ wrangle_data <- function(d_raw) {
   dttm_cols <- c(
     "index_arrival_date",
     "arrival_date",
+    "hospital_discharge",
     "ed_dischargedate",
     "maxtrop_time",
     "symptom_onset",
@@ -31,6 +32,8 @@ wrangle_data <- function(d_raw) {
     "ep_early_dsch_no_30d_event",
     "ep_6month_readmission_n",
     "ep_30d_event" = "thirtyevent",
+    "ed_los" = "e_dlos",
+    "admitted",
     "troponin" = "zero_trop",
     "trop_mins",
     "pt_id" = "studynumberunique",
@@ -77,6 +80,7 @@ wrangle_data <- function(d_raw) {
       across(all_of(cols_recode_binary), ~ as.numeric(.x == 2)),
       intervention = intervention - 1,
       under2_hoslos = as.numeric(ep_hos_los <= 2),
+      admitted = as.numeric(!is.na(hospital_discharge)),
 
       # calculate endpoints
       ep_early_dsch_no_30d_event = as.integer((ep_30d_event == 0 | is.na(ep_30d_event)) & ep_hos_los <= 4)

@@ -16,19 +16,25 @@ make_table_1 <- function(d_clean) {
   total_n_row <- d_cohorts |>
     summarize(col = "total_n", cell_content = as.character(n()), .by = c(cohort, intervention))
 
-  n_perc_cols <- c(
-    "male",
-    "indigenous",
-    "under2_hoslos",
+
+  risk_factor_cols <- c(
     "smoking",
     "familyhistory",
     "hypertension",
     "dyslipidaemia",
-    "diabetes",
+    "diabetes"
+  )
+
+  n_perc_cols <- c(
+    "male",
+    "indigenous",
+    "under2_hoslos",
     "prior_mi",
     "prior_cabg",
     "prior_angioplasty",
-    "prior_cad"
+    "prior_cad",
+    "admitted",
+    risk_factor_cols
   )
 
   n_perc_cells <- n_perc_cols |>
@@ -36,11 +42,18 @@ make_table_1 <- function(d_clean) {
     bind_rows()
 
 
-  iqr_cols <- c("troponin", "trop_mins")
+  iqr_cols <- c("troponin", "trop_mins", "ed_los", "ep_hos_los")
 
   iqr_cells <- iqr_cols |>
     map(~ summarize_by_iqr(d_cohorts, .x)) |>
     bind_rows()
+
+
+  health_utilisation <- c(
+    "ed_los",
+    "ep_hos_los",
+    "admitted"
+  )
 
   # make full table
   bind_rows(
@@ -49,7 +62,17 @@ make_table_1 <- function(d_clean) {
     iqr_cells
   ) |>
     mutate(cohort = glue("{cohort}_cohort"), intervention = ifelse(intervention, "intervention", "standard_care")) |>
-    pivot_wider(names_from = c("cohort", "intervention"), values_from = cell_content, names_sep = ":")
+    pivot_wider(names_from = c("cohort", "intervention"), values_from = cell_content, names_sep = ":") |>
+    mutate(
+      .before = everything(),
+      col_grp = case_when(
+        str_detect(col, paste0(risk_factor_cols, collapse = "|")) ~ "1_risk_factor",
+        str_detect(col, "prior_") ~ "2_medical_history",
+        str_detect(col, paste0(health_utilisation, collapse = "|")) ~ "3_health_service_utilisation",
+        .default = "0_general"
+      )
+    ) |>
+    arrange(col_grp)
 }
 
 

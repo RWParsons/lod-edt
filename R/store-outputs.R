@@ -2,12 +2,12 @@ store_outputs <- function(...) {
   l_all <- c(as.list(environment()), list(...))
 
   # remove existing files
-  old_files <- list.files(here::here("output"), full.names = TRUE)
+  old_files <- list.files(here("output"), full.names = TRUE)
   map(old_files, ~ file.remove(.x))
 
   for (i in 1:length(l_all)) {
     withr::with_dir(
-      here::here("output"),
+      here("output"),
       save_dispatch(l_all[i])
     )
   }

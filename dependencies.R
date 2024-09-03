@@ -4,4 +4,6 @@ suppressPackageStartupMessages({
   library(tarchetypes)
   library(glmmTMB)
   library(glue)
+  library(scales)
+  library(here)
 })
