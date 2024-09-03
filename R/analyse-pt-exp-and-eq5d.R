@@ -15,9 +15,9 @@ visualise_eq5d <- function(data) {
 get_qnt_eq5d <- function(data) {
   list(
     prep_eq5d_data(data, cohort = "full"),
-    prep_eq5d_data(data, cohort = "lod")  
-  ) |> 
-    map(~ pivot_wider(.x, names_from = domain, values_from = value)) |> 
+    prep_eq5d_data(data, cohort = "lod")
+  ) |>
+    map(~ pivot_wider(.x, names_from = domain, values_from = value)) |>
     bind_rows()
 }
 
@@ -27,11 +27,11 @@ prep_eq5d_data <- function(data, cohort = c("full", "lod")) {
   data |>
     filter(presentation_no == 1) |>
     (\(d) {
-      if(cohort == "lod") {
+      if (cohort == "lod") {
         d <- d |> filter(troponin <= troponin_lod)
       }
       d
-    })() |> 
+    })() |>
     select(pt_id, intervention, starts_with("eq5d")) |>
     na.omit() |>
     pivot_longer(starts_with("eq5d"), names_to = "domain") |>
@@ -49,12 +49,14 @@ get_qnt_patient_experience <- function(data) {
   data |>
     filter(presentation_no == 1) |>
     (\(d) {
-      d_lod <- d |> filter(troponin <= troponin_lod) |> mutate(cohort = "lod")
+      d_lod <- d |>
+        filter(troponin <= troponin_lod) |>
+        mutate(cohort = "lod")
       d_full <- d |> mutate(cohort = "full")
       list(d_lod, d_full)
-    })() |> 
+    })() |>
     map(
-      ~ .x |> 
+      ~ .x |>
         select(pt_id, cohort, intervention, starts_with("experience")) |>
         na.omit() |>
         pivot_longer(starts_with("experience"), names_to = "pt_exp_q") |>
@@ -62,6 +64,6 @@ get_qnt_patient_experience <- function(data) {
         summarize(value = mean(value), n = n()) |>
         ungroup() |>
         pivot_wider(values_from = value, names_from = pt_exp_q)
-    ) |> 
-    bind_rows()   
+    ) |>
+    bind_rows()
 }

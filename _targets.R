@@ -68,10 +68,15 @@ list(
     get_qnt_patient_experience(d_clean)
   ),
   tar_target(
+    tbl_1,
+    make_table_1(d_clean, d_raw)
+  ),
+  tar_target(
     outputs,
     store_outputs(
       tbl_intervention_effects = tbl_intervention_effects,
       tbl_cardiac_assessments = tbl_cardiac_assessments,
+      tbl_1 = tbl_1,
       vis_eq5d = vis_eq5d,
       vis_hoslos = vis_hos_los,
       vis_early_disch = vis_early_disch,

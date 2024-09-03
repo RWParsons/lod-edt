@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|1c04978c7cea2200|||||||||||||||
+.Random.seed|object|cde13dfa52455400|||||||||||||||
 add_days_since_site_start|function|a067b9762aa45794|||||||||||||||
 analyse_primary_ep|function|ac7eba803017375f|||||||||||||||
 bs|function|248c7f8909e45602|||||||||||||||
@@ -16,12 +16,14 @@ get_cardiac_table|function|2de6df81afe31921|||||||||||||||
 get_family|function|d07f39c9e360e969|||||||||||||||
 get_formula|function|6f2c8309be270dd0|||||||||||||||
 get_intervention_effects|function|844be79c64f2e6f3|||||||||||||||
+get_iqr_cell|function|b98cb6ca51c736f1|||||||||||||||
 get_qnt_eq5d|function|f8ab53f378cee4d6|||||||||||||||
 get_qnt_patient_experience|function|86c0335070e13662|||||||||||||||
 get_troponin_lod|function|570e28f5f26e3122|||||||||||||||
 group_models|function|26407210d6c932d9|||||||||||||||
 impute_missing_data|function|81a8f346c969af4c|||||||||||||||
 is_binary|function|12fd7269b5a018f4|||||||||||||||
+make_table_1|function|4261140cf5e3ae88|||||||||||||||
 mice|function|3799bb645922aa23|||||||||||||||
 models|stem|7beca851a3565e84|e1bf1cf9d18588e3|54592cb3ec741306|-1655822660||t19960.2851263107s|0a0fc3aa55add65c|13777250|rds|local|vector|||0||
 models_iter|pattern|5231a3d1555b7f68|3229f33a5b49ae14||-273965463||||13771516|rds|local|list||models_iter_e628a91bca14d868*models_iter_3bcdb6a9aebd7165*models_iter_f48c18d0e892f6f5*models_iter_12f3b4f6b67b5669|80.202||
@@ -29,7 +31,7 @@ models_iter_12f3b4f6b67b5669|branch|57b174a3358ef9a3|3229f33a5b49ae14|80a36a63a7
 models_iter_3bcdb6a9aebd7165|branch|796c95796437b91a|3229f33a5b49ae14|80a36a63a7908112|133656555||t19960.2846666423s|04c4552fc31a096c|3562489|rds|local|list|models_iter||9.141||
 models_iter_e628a91bca14d868|branch|053c820fc902f2be|3229f33a5b49ae14|80a36a63a7908112|-1190086691||t19960.2850926259s|c3eb333223c5c51b|3355602|rds|local|list|models_iter||45.937||
 models_iter_f48c18d0e892f6f5|branch|0d5a8ff979d969a0|3229f33a5b49ae14|80a36a63a7908112|-464799103||t19960.284734325s|ca17219bca76baee|3298555|rds|local|list|models_iter||14.984||
-outputs|stem|e77a28538e829a39|4df0d118bf6f1b3f|86e8d6dc12c81bce|-87300777||t19964.1657770805s|d21be8cf0dd771ce|44|rds|local|vector|||1.703||
+outputs|stem|e77a28538e829a39|4bf83bdd7787100e|49c57a2fd7b3c1a7|-87300777||t19969.1132819036s|d21be8cf0dd771ce|44|rds|local|vector|||1.937||
 prep_eq5d_data|function|e0d8a3acec0fa51b|||||||||||||||
 qnt_eq5d|stem|83c830396914a190|60d31acd9ee6596f|fbcd20ac91ddf561|169920332||t19964.1653431521s|8c0d39d515a5e972|399|rds|local|vector|||2.297||
 qnt_patient_experience|stem|ad0e68b3685f9ba7|6555f10daebc53b6|0936892b853e6a8c|1429088306||t19964.1657424362s|69e2af848b14f9a1|285|rds|local|vector|||1.734||
@@ -38,7 +40,11 @@ save_dispatch|function|ec818ac7d62ced23|||||||||||||||
 save_plot|function|b536204d2b2df2c1|||||||||||||||
 save_tbl|function|c6b79c9ce5a57ca8|||||||||||||||
 store_outputs|function|791ddeb8c789e2af|||||||||||||||
-tbl_cardiac_assessments|stem|9b219b94b90c081c|b2dc486822dcf67b|edb077f3d7140c54|-104038283||t19964.0109553898s|dbf089da8c91097d|649|rds|local|vector|||2.265||
+summarize_by_iqr|function|7b724dd6d1d37673|||||||||||||||
+summarize_by_n_percent|function|a8f4675597914f27|||||||||||||||
+tbl_1|stem|17fa04d876dd7151|81ce1bdd49bc0ac5|113f951bb93c832d|-840015973||t19969.1124211287s|88a0f7662c2a3565|700|rds|local|vector|||2.843||
+tbl_cardiac_assessments|stem|9b219b94b90c081c|b2dc486822dcf67b|edb077f3d7140c54|-104038283||t19969.0801636738s|dbf089da8c91097d|649|rds|local|vector|||2.438||
+tbl_format_n_perc|function|d9c9900ee5401b60|||||||||||||||
 tbl_intervention_effects|stem|86099201967485dd|20ec4da0d0fa4e6d|65719463ed0b0ed9|1548485281||t19960.2982175201s|6aafb1ac4eb25aac|4066887|rds|local|vector|||65.094||
 vis_early_disch|stem|817724c6ca84ba99|ceed1a1b2fefd60e|bbabb8aa0b31dc7b|-1987087722||t19960.3195148601s|19d91b2bfcdf11ce|1117085|rds|local|vector|||2.391||
 vis_eq5d|stem|33661a9e73140c23|1d4841140a49e4ae|b4f242bc5a24334a|1388869378||t19964.1653430016s|a498c86e6016b7f4|390347|rds|local|vector|||2.203||
