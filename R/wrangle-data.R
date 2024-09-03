@@ -12,7 +12,8 @@ wrangle_data <- function(d_raw) {
 
   dt_cols <- c(
     "dob",
-    "last_contact"
+    "last_contact",
+    "date_death"
   )
 
   cols_recode_binary <- c(
@@ -33,6 +34,7 @@ wrangle_data <- function(d_raw) {
     "ep_6month_readmission_n",
     "ep_30d_event" = "thirtyevent",
     "ed_los" = "e_dlos",
+    "mortality_30d",
     "admitted",
     "troponin" = "zero_trop",
     "trop_mins",
@@ -77,7 +79,7 @@ wrangle_data <- function(d_raw) {
       trop_mins = as.numeric(difftime(zero_time, arrival_date, units = "mins")),
       # convert grouping vars to character/factor and relevel some variables to be binary [0, 1] rather than [1, 2]
       across(all_of(cols_factors), as.character),
-      across(all_of(cols_recode_binary), ~ as.numeric(.x == 2)),
+      across(all_of(cols_recode_binary), ~ as.numeric(.x == 1)),
       intervention = intervention - 1,
       under2_hoslos = as.numeric(ep_hos_los <= 2),
       admitted = as.numeric(!is.na(hospital_discharge)),
@@ -90,11 +92,15 @@ wrangle_data <- function(d_raw) {
     arrange(presentation_no) |>
     fill(pt_age, pt_sex, .direction = "down") |>
     ungroup() |>
-    # add ep_6month_readmission_n
+    # add ep_6month_readmission_n and clean date_death so that mortality_30d can be calculated
     mutate(ep_6month_readmission_n = NA_integer_) |>
     group_by(pt_id) |>
     group_split() |>
     map(\(.x) {
+      if (any(!is.na(.x$date_death))) {
+        .x$date_death <- .x$date_death[!is.na(.x$date_death)]
+      }
+
       n_readmissions <- .x |>
         filter(arrival_date <= index_arrival_date %m+% months(6)) |>
         nrow() |>
@@ -103,14 +109,26 @@ wrangle_data <- function(d_raw) {
       .x$ep_6month_readmission_n <- n_readmissions
       .x
     }) |>
-    bind_rows()
+    bind_rows() |>
+    mutate(
+      mortality_30d = ifelse(is.na(date_death), 0, NA),
+      mortality_30d = ifelse(
+        is.na(mortality_30d),
+        as.numeric(date_death <= as.Date(arrival_date) + days(30)),
+        mortality_30d
+      )
+    )
+
 
   d |> select(
     all_of(cols_keep),
     est:mri,
     outpatient_est:outpatient_mri,
     matches("eq5d_[0-9]$"),
-    matches("experience_[0-9]$")
+    matches("experience_[0-9]$"),
+    index_mi,
+    matches("index_.*MI"),
+    matches("index_.*injury")
   )
 }
 

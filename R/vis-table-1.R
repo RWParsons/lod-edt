@@ -17,12 +17,20 @@ make_table_1 <- function(d_clean) {
     summarize(col = "total_n", cell_content = as.character(n()), .by = c(cohort, intervention))
 
 
+  # create table for variables presented as n (%)
   risk_factor_cols <- c(
     "smoking",
     "familyhistory",
     "hypertension",
     "dyslipidaemia",
     "diabetes"
+  )
+
+  index_events <- str_subset(names(d_cohorts), "^index_")
+  clinical_outcomes <- c(
+    index_events,
+    "mortality_30d",
+    "ep_30d_event"
   )
 
   n_perc_cols <- c(
@@ -34,14 +42,15 @@ make_table_1 <- function(d_clean) {
     "prior_angioplasty",
     "prior_cad",
     "admitted",
-    risk_factor_cols
+    risk_factor_cols,
+    clinical_outcomes
   )
 
   n_perc_cells <- n_perc_cols |>
     map(~ summarize_by_n_percent(d_cohorts, .x)) |>
     bind_rows()
 
-
+  # create table for variables presented as IQR (25th - 75th)
   iqr_cols <- c("troponin", "trop_mins", "ed_los", "ep_hos_los")
 
   iqr_cells <- iqr_cols |>
@@ -69,6 +78,7 @@ make_table_1 <- function(d_clean) {
         str_detect(col, paste0(risk_factor_cols, collapse = "|")) ~ "1_risk_factor",
         str_detect(col, "prior_") ~ "2_medical_history",
         str_detect(col, paste0(health_utilisation, collapse = "|")) ~ "3_health_service_utilisation",
+        str_detect(col, paste0(clinical_outcomes, collapse = "|")) ~ "4_clinical_outcomes",
         .default = "0_general"
       )
     ) |>
@@ -103,8 +113,11 @@ summarize_by_n_percent <- function(d, binary_var) {
     rename(var := !!rlang::sym(binary_var)) |>
     filter(var == 1) |>
     summarize(n_var = n(), .by = c(cohort, intervention)) |>
-    left_join(cohort_n, by = c("cohort", "intervention")) |>
-    mutate(n_perc_var = tbl_format_n_perc(n = n_var, n_total = n)) |>
+    right_join(cohort_n, by = c("cohort", "intervention")) |>
+    mutate(
+      n_var = replace_na(n_var, 0),
+      n_perc_var = tbl_format_n_perc(n = n_var, n_total = n)
+    ) |>
     select(cohort, intervention, !!new_name := n_perc_var) |>
     pivot_longer(cols = all_of(new_name), names_to = "col", values_to = "cell_content")
 }
