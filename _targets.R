@@ -69,7 +69,7 @@ list(
   ),
   tar_target(
     tbl_1,
-    make_table_1(d_clean, d_raw)
+    make_table_1(d_clean)
   ),
   tar_target(
     outputs,

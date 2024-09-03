@@ -1,46 +1,8 @@
-make_table_1 <- function(d_clean, d_raw) {
-  cols_add_to_d_clean <- c(
-    "indigenous",
-    "zero_time",
-    "familyhistory",
-    "smoking",
-    "hypertension",
-    "dyslipidaemia",
-    "diabetes",
-    "prior_mi",
-    "prior_cabg",
-    "prior_angioplasty",
-    "prior_cad"
-  )
-
-  # TODO: also fix coding to be what is in the labelled data for the family history - TBD to see what Jaimi says about how these are coded
-  # TODO: move these fixes into changes in d_clean
-  # TEMP FIXES to add cols:
-  d_more_cols <- d_raw |>
-    rename(
-      pt_id = studynumberunique,
-      presentation_no = presentation_number
-    ) |>
-    mutate(
-      pt_id = as.character(pt_id),
-      trop_time = difftime(as.POSIXct(zero_time, format = "%m/%d/%Y %H:%M"), as.POSIXct(arrival_date, format = "%m/%d/%Y %H:%M"), units = "mins"),
-      across(
-        all_of(c(
-          "smoking", "familyhistory", "hypertension", "dyslipidaemia", "diabetes",
-          "prior_mi", "prior_cabg", "prior_angioplasty", "prior_cad"
-        )),
-        ~ as.numeric(.x == 1)
-      )
-    ) |>
-    select(pt_id, presentation_no, all_of(cols_add_to_d_clean), trop_time) |>
-    as_tibble()
-
+make_table_1 <- function(d_clean) {
   d_cohorts <- d_clean |>
     filter(presentation_no == 1) |>
-    inner_join(d_more_cols, by = c("pt_id", "presentation_no")) |>
     mutate(
-      male = as.numeric(pt_sex == 1),
-      under2_hoslos = as.numeric(ep_hos_los <= 2)
+      male = as.numeric(pt_sex == 1)
     ) |>
     (\(d) {
       bind_rows(
@@ -63,7 +25,10 @@ make_table_1 <- function(d_clean, d_raw) {
     "hypertension",
     "dyslipidaemia",
     "diabetes",
-    "prior_mi", "prior_cabg", "prior_angioplasty", "prior_cad"
+    "prior_mi",
+    "prior_cabg",
+    "prior_angioplasty",
+    "prior_cad"
   )
 
   n_perc_cells <- n_perc_cols |>
@@ -71,7 +36,7 @@ make_table_1 <- function(d_clean, d_raw) {
     bind_rows()
 
 
-  iqr_cols <- c("troponin", "trop_time")
+  iqr_cols <- c("troponin", "trop_mins")
 
   iqr_cells <- iqr_cols |>
     map(~ summarize_by_iqr(d_cohorts, .x)) |>
@@ -100,7 +65,7 @@ summarize_by_iqr <- function(d, continuous_var) {
 get_iqr_cell <- function(x) {
   paste0(
     quantile(x, probs = c(0.25, 0.75), na.rm = TRUE),
-    collapse = " - "
+    collapse = " -- "
   )
 }
 
