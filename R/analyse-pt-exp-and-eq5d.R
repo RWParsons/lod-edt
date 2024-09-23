@@ -36,7 +36,7 @@ prep_eq5d_data <- function(data, cohort = c("full", "lod")) {
     na.omit() |>
     pivot_longer(starts_with("eq5d"), names_to = "domain") |>
     group_by(intervention, domain) |>
-    summarize(value = mean(value), n = n()) |>
+    summarize(value = glue("{round(mean(value), 2)} ({round(sd(value), 2)})"), n = n()) |>
     ungroup() |>
     mutate(
       intervention = ifelse(intervention == 1, "Post-intervention", "Pre-intervention"),
@@ -61,7 +61,7 @@ get_qnt_patient_experience <- function(data) {
         na.omit() |>
         pivot_longer(starts_with("experience"), names_to = "pt_exp_q") |>
         group_by(intervention, cohort, pt_exp_q) |>
-        summarize(value = mean(value), n = n()) |>
+        summarize(value = glue("{round(mean(value), 2)} ({round(sd(value), 2)})"), n = n()) |>
         ungroup() |>
         pivot_wider(values_from = value, names_from = pt_exp_q)
     ) |>

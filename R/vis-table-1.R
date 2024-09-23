@@ -64,11 +64,35 @@ make_table_1 <- function(d_clean) {
     "admitted"
   )
 
+  # patient reported outcomes
+  pt_xp <- get_qnt_patient_experience(d_clean) |>
+    rename(
+      pt_experience_q1_mean_sd = experience_1,
+      pt_experience_q2_mean_sd = experience_2
+    ) |>
+    select(-n) |>
+    pivot_longer(starts_with("pt_experience"), names_to = "col", values_to = "cell_content")
+
+  pt_eq5d <- get_qnt_eq5d(d_clean) |>
+    mutate(intervention = as.numeric(intervention == "Pre-intervention")) |>
+    rename_with(~
+      ifelse(
+        str_detect(.x, "eq5d"),
+        glue("pt_{.x}_mean_sd"),
+        .x
+      )) |>
+    select(-n) |>
+    pivot_longer(starts_with("pt_eq5d"), names_to = "col", values_to = "cell_content")
+
+  proms <- c("eq5d", "experience")
+
   # make full table
   bind_rows(
     total_n_row,
     n_perc_cells,
-    iqr_cells
+    iqr_cells,
+    pt_xp,
+    pt_eq5d
   ) |>
     mutate(cohort = glue("{cohort}_cohort"), intervention = ifelse(intervention, "intervention", "standard_care")) |>
     pivot_wider(names_from = c("cohort", "intervention"), values_from = cell_content, names_sep = ":") |>
@@ -79,6 +103,7 @@ make_table_1 <- function(d_clean) {
         str_detect(col, "prior_") ~ "2_medical_history",
         str_detect(col, paste0(health_utilisation, collapse = "|")) ~ "3_health_service_utilisation",
         str_detect(col, paste0(clinical_outcomes, collapse = "|")) ~ "4_clinical_outcomes",
+        str_detect(col, paste0(proms, collapse = "|")) ~ "5_patient_reported_outcomes",
         .default = "0_general"
       )
     ) |>
