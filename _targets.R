@@ -49,7 +49,7 @@ list(
   ),
   tar_target(
     vis_early_disch,
-    visualise_early_disch(d_clean)
+    visualise_early_disch(d_clean, models$ep_early_dsch_no_30d_event$m_full_cohort)
   ),
   tar_target(
     tbl_cardiac_assessments,
@@ -77,9 +77,9 @@ list(
       tbl_intervention_effects = tbl_intervention_effects,
       tbl_cardiac_assessments = tbl_cardiac_assessments,
       tbl_1 = tbl_1,
-      vis_eq5d = vis_eq5d,
       vis_hoslos = vis_hos_los,
-      vis_early_disch = vis_early_disch,
+      vis_early_disch_data = vis_early_disch$p_smoothed_data,
+      vis_early_disch_model = vis_early_disch$p_model_preds,
       qnt_eq5d = qnt_eq5d,
       qnt_patient_experience = qnt_patient_experience
     )
