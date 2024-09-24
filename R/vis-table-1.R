@@ -74,13 +74,11 @@ make_table_1 <- function(d_clean) {
     pivot_longer(starts_with("pt_experience"), names_to = "col", values_to = "cell_content")
 
   pt_eq5d <- get_qnt_eq5d(d_clean) |>
-    mutate(intervention = as.numeric(intervention == "Pre-intervention")) |>
-    rename_with(~
-      ifelse(
-        str_detect(.x, "eq5d"),
-        glue("pt_{.x}_mean_sd"),
-        .x
-      )) |>
+    rename_with(~ ifelse(
+      str_detect(.x, "eq5d"),
+      glue("pt_{.x}_mean_sd"),
+      .x
+    )) |>
     select(-n) |>
     pivot_longer(starts_with("pt_eq5d"), names_to = "col", values_to = "cell_content")
 
@@ -94,7 +92,7 @@ make_table_1 <- function(d_clean) {
     pt_xp,
     pt_eq5d
   ) |>
-    mutate(cohort = glue("{cohort}_cohort"), intervention = ifelse(intervention, "intervention", "standard_care")) |>
+    mutate(cohort = glue("{cohort}_cohort"), intervention = ifelse(intervention == 1, "intervention", "standard_care")) |>
     pivot_wider(names_from = c("cohort", "intervention"), values_from = cell_content, names_sep = ":") |>
     mutate(
       .before = everything(),

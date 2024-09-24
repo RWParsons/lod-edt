@@ -20,13 +20,13 @@ fit_model <- function(data, outcome, ...) {
     family = fam,
     data = data_first_presentation
   )
-  
+
   m_lod_cohort <- glmmTMB(
     formula = m_form,
     family = fam,
     data = data_first_presentation_low_trop
   )
-  
+
 
   list(
     outcome = outcome,
@@ -48,7 +48,7 @@ get_troponin_lod <- function() 2
 get_formula <- function(depvar_name) {
   formula(paste(
     depvar_name,
-    "~ intervention + bs(pt_age) + pt_sex + bs(days_since_site_start) + (1 | hospital_id)"
+    "~ intervention * days_since_site_start + bs(pt_age) + pt_sex + (1 | hospital_id)"
   ))
 }
 

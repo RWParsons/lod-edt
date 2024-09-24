@@ -39,7 +39,6 @@ prep_eq5d_data <- function(data, cohort = c("full", "lod")) {
     summarize(value = glue("{round(mean(value), 2)} ({round(sd(value), 2)})"), n = n()) |>
     ungroup() |>
     mutate(
-      intervention = ifelse(intervention == 1, "Post-intervention", "Pre-intervention"),
       cohort = .env$cohort
     )
 }

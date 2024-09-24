@@ -80,7 +80,7 @@ wrangle_data <- function(d_raw) {
       # convert grouping vars to character/factor and relevel some variables to be binary [0, 1] rather than [1, 2]
       across(all_of(cols_factors), as.character),
       across(all_of(cols_recode_binary), ~ as.numeric(.x == 1)),
-      intervention = intervention - 1,
+      intervention = as.factor(intervention - 1),
       under2_hoslos = as.numeric(ep_hos_los <= 2),
       admitted = as.numeric(!is.na(hospital_discharge)),
 
