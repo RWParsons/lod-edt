@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|3e9ea651aa370e09|||||||||||||||
+.Random.seed|object|6804df1f3fa3a396|||||||||||||||
 add_days_since_site_start|function|a067b9762aa45794|||||||||||||||
 analyse_primary_ep|function|ac7eba803017375f|||||||||||||||
 bs|function|248c7f8909e45602|||||||||||||||
@@ -8,14 +8,15 @@ d_raw|stem|a14875553ceeb4fb|e75db89c67034f12|f3a0d7b8b230566f|-1739424631||t1998
 data_file|stem|f5ca4cbf99a00d4d|88ed5201186003d7|2c530c1562a7fbd1|-679625259|data/source-data-2.csv|t19940.1648611111s|a87d56b2320a7b7b|4769627|file|local|vector|||0.797||
 endpoint_varnames|stem|602840b1a855d235|9d0bd8b12b0e0121|eb2fa1819b75c7b0|-708616114||t19990.1684478573s|45959d401a44d623|121|rds|local|vector||endpoint_varnames_078f53828b0c84c6*endpoint_varnames_56f5c2a6b84a32db*endpoint_varnames_dd9e4a7169489f00*endpoint_varnames_e42956c7f981e236|0||
 filter_for_6month_presentations|function|ddac2fd9e407df82|||||||||||||||
-fit_model|function|c911b86f8a95ccd9|||||||||||||||
+fit_model|function|8f706d7a9375ab31|||||||||||||||
 format_n_perc|function|80203713df3764cb|||||||||||||||
 get_cardiac_ax_tbl|function|ed070b8c05a6f047|||||||||||||||
 get_cardiac_ax_tbls|function|ac34b83f1ed9f9f0|||||||||||||||
 get_cardiac_table|function|2de6df81afe31921|||||||||||||||
-get_family|function|d07f39c9e360e969|||||||||||||||
-get_formula|function|c8291d2186c634c1|||||||||||||||
-get_intervention_effects|function|844be79c64f2e6f3|||||||||||||||
+get_ep_lab|function|073533cb5d47382d|||||||||||||||
+get_family|function|295abed69ebff9c5|||||||||||||||
+get_formula|function|a35b772ddc34699b|||||||||||||||
+get_intervention_effects|function|a25328b1acf6a245|||||||||||||||
 get_iqr_cell|function|3c0af7f4b2401242|||||||||||||||
 get_qnt_eq5d|function|2d1659ca9c15df87|||||||||||||||
 get_qnt_patient_experience|function|f0902a997da3bab6|||||||||||||||
@@ -25,13 +26,13 @@ impute_missing_data|function|81a8f346c969af4c|||||||||||||||
 is_binary|function|12fd7269b5a018f4|||||||||||||||
 make_table_1|function|0d467fc4e8caf1cb|||||||||||||||
 mice|function|3799bb645922aa23|||||||||||||||
-models|stem|67e15895efd57afd|e1bf1cf9d18588e3|8707ec740f23f9cc|-1655822660||t19990.1742846179s|178e9104be9b068e|10133038|rds|local|vector|||0||
-models_iter|pattern|bbcf6dd232162372|3229f33a5b49ae14||-273965463||||10127412|rds|local|list||models_iter_e628a91bca14d868*models_iter_3bcdb6a9aebd7165*models_iter_f48c18d0e892f6f5*models_iter_12f3b4f6b67b5669|87.828||
-models_iter_12f3b4f6b67b5669|branch|e42a556b0b54fc9d|3229f33a5b49ae14|249b69af025713cc|726721819||t19990.1737337587s|65bad66e9c804181|2699068|rds|local|list|models_iter||9.562||
-models_iter_3bcdb6a9aebd7165|branch|63733ecdf1af43b9|3229f33a5b49ae14|249b69af025713cc|133656555||t19990.1737107576s|cbcae232ee63541a|2706730|rds|local|list|models_iter||7.891||
-models_iter_e628a91bca14d868|branch|6832154dec256d2c|3229f33a5b49ae14|249b69af025713cc|-1190086691||t19990.1742482607s|0eeb8f89640e72f6|2390481|rds|local|list|models_iter||54.375|NANaN function evaluation. NANaN function evaluation|
-models_iter_f48c18d0e892f6f5|branch|17c45d9e6cdae63d|3229f33a5b49ae14|249b69af025713cc|-464799103||t19990.1738030085s|82da9414ed328367|2331133|rds|local|list|models_iter||16|NANaN function evaluation. NANaN function evaluation|
-outputs|stem|3e6d6a4dda60d6db|7eb0658f5e008e3c|261837e3d94e086a|-87300777||t19991.0818960842s|d21be8cf0dd771ce|44|rds|local|vector|||3.5||
+models|stem|5b7dbefc759dcecb|e1bf1cf9d18588e3|a43bcea81860e32d|-1655822660||t19991.2634633089s|7eef4defa9f83749|10225303|rds|local|vector|||0||
+models_iter|pattern|c086ce62bc688dbf|3229f33a5b49ae14||-273965463||||10258262|rds|local|list||models_iter_e628a91bca14d868*models_iter_3bcdb6a9aebd7165*models_iter_f48c18d0e892f6f5*models_iter_12f3b4f6b67b5669|100.171||
+models_iter_12f3b4f6b67b5669|branch|4cdca2bfd0abbff7|3229f33a5b49ae14|7bcf3bfa81b2450f|726721819||t19991.263149191s|e3477f9afc78a717|2744010|rds|local|list|models_iter||22.39|NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. Model convergence problem nonpositivedefinite Hessian matrix. See vignettetroubleshooting. Model convergence problem false convergence 8. See vignettetroubleshooting, helpdiagnose|
+models_iter_3bcdb6a9aebd7165|branch|37f45850607671e7|3229f33a5b49ae14|7bcf3bfa81b2450f|133656555||t19991.263165239s|1ee3bb17ae786a4b|2760843|rds|local|list|models_iter||23.844|Model convergence problem nonpositivedefinite Hessian matrix. See vignettetroubleshooting. Model convergence problem singular convergence 7. See vignettetroubleshooting, helpdiagnose. Model convergence problem nonpositivedefinite Hessian matrix. See vignettetroubleshooting. Model convergence problem singular convergence 7. See vignettetroubleshooting, helpdiagnose|
+models_iter_e628a91bca14d868|branch|f70fc42509e80b72|3229f33a5b49ae14|7bcf3bfa81b2450f|-1190086691||t19991.2634260243s|fbfeb7140e8cada5|2408512|rds|local|list|models_iter||46.625||
+models_iter_f48c18d0e892f6f5|branch|eda49dcca619ff9f|3229f33a5b49ae14|7bcf3bfa81b2450f|-464799103||t19991.2629710377s|f6943d82803cb9db|2344897|rds|local|list|models_iter||7.312|Model convergence problem nonpositivedefinite Hessian matrix. See vignettetroubleshooting. Model convergence problem singular convergence 7. See vignettetroubleshooting, helpdiagnose. Model convergence problem nonpositivedefinite Hessian matrix. See vignettetroubleshooting|
+outputs|stem|3e6d6a4dda60d6db|87c59159e3ea8d8c|dfc5c1d1b70e3fc3|-87300777||t19991.2787012078s|d21be8cf0dd771ce|44|rds|local|vector|||4.531||
 prep_eq5d_data|function|838f6d7fbc0dbe4f|||||||||||||||
 qnt_eq5d|stem|a9f57f0f67445105|60d31acd9ee6596f|0dddc419a7389da4|169920332||t19990.1684466145s|ce6093ee2969a9f6|392|rds|local|vector|||2.781||
 qnt_patient_experience|stem|ba8e76621867fedd|6555f10daebc53b6|a15e3165a4a3d56d|1429088306||t19990.1684469403s|24c2ba8d4fe0ab05|322|rds|local|vector|||0.109||
@@ -45,12 +46,14 @@ summarize_by_n_percent|function|2d4d02a40c255d3f|||||||||||||||
 tbl_1|stem|7c11f267d80c9100|c5b0f1e29afe3837|0c2b7ee9e1b2d024|-840015973||t19990.1684674467s|569b2d599f465119|1249|rds|local|vector|||5.297||
 tbl_cardiac_assessments|stem|2be7d58a09729199|b2dc486822dcf67b|a44efe687f5688f7|-104038283||t19990.1684581222s|dbf089da8c91097d|649|rds|local|vector|||0.938||
 tbl_format_n_perc|function|d9c9900ee5401b60|||||||||||||||
-tbl_intervention_effects|stem|80584c96955300c0|20ec4da0d0fa4e6d|fcf4e956c3f54573|1548485281||t19990.1746605897s|f91b240e20bd8c63|2837923|rds|local|vector|||30.156||
-vis_early_disch|stem|0ed9079c0db71345|4c45b12e480971d4|f6a5472f77c84d5d|-1987087722||t19991.0772433595s|2cb314d0ec0b1411|6953710|rds|local|vector|||1.515||
+tbl_intervention_effects|stem|03f44f55c93e1636|20ec4da0d0fa4e6d|1e89e975050541e3|1548485281||t19991.2692010774s|f959b2311163ff79|1147|rds|local|vector|||30.984||
+vis_early_disch|stem|96ea26725e968cec|f7c275615e44e2d3|858c820a35118870|-1987087722||t19991.2753872315s|d0538d7b6cf4bf39|7538304|rds|local|vector|||1.688||
 vis_eq5d|stem|3c2d7f4021775cc9|1d4841140a49e4ae|65057df8b17f547e|1388869378||t19990.1684407891s|5593107a544e5c2e|510748|rds|local|vector|||2.671||
-vis_hos_los|stem|15ba33d2f49d8319|8f056ce47646e2e4|965452bdf17d97c4|-785057180||t19990.168446314s|9b25cd8fb56f0293|1346256|rds|local|vector|||2.532||
+vis_hos_los|stem|15ba33d2f49d8319|8f056ce47646e2e4|eb2fa1819b75c7b0|-785057180||t19990.168446314s||1346256|rds|local|vector|||1.672||could not find function visualise_hos_los
+vis_hoslos|stem|db1368808c4c7ecd|324afc09d7e7f15c|858c820a35118870|-1125074418||t19991.275413155s|b52e36b0d6ac2306|7090134|rds|local|vector|||2.031|Predicting new random effect levels for terms 0  days_since_site_start  interventionhospital_idDisable this warning with allow.new.levelsTRUE|
 visualise_early_disch|function|1466e1c63c326ede|||||||||||||||
 visualise_eq5d|function|6ac6a87fb1864862|||||||||||||||
 visualise_hos_los|function|f9aa1b24229fc506|||||||||||||||
 visualise_missingness|function|d4f8ca6c78a9f854|||||||||||||||
+visualise_outcome|function|c2abdefc1b1132f0|||||||||||||||
 wrangle_data|function|6f7521a718d76137|||||||||||||||

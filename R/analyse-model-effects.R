@@ -6,11 +6,13 @@ get_intervention_effects <- function(models) {
 
   full_cohort_effects <- map(
     models,
-    ~ marginaleffects::avg_comparisons(.x$m_full_cohort, variables = list(intervention = 0:1), re.form = NA, type = "response")
+    ~ marginaleffects::avg_comparisons(.x$m_full_cohort, variables = list(intervention = 0:1), re.form = NA, type = "response") |>
+      mutate(formula = Reduce(paste, deparse(.x$m_full_cohort$call$formula)))
   )
   lod_cohort_effects <- map(
     models,
-    ~ marginaleffects::avg_comparisons(.x$m_lod_cohort, variables = list(intervention = 0:1), re.form = NA, type = "response")
+    ~ marginaleffects::avg_comparisons(.x$m_lod_cohort, variables = list(intervention = 0:1), re.form = NA, type = "response") |>
+      mutate(formula = Reduce(paste, deparse(.x$m_lod_cohort$call$formula)))
   )
 
   full_cohort_effects_tbl <- map(
