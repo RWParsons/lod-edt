@@ -1,4 +1,5 @@
 suppressPackageStartupMessages({
+  library(cowplot)
   library(tidyverse)
   library(targets)
   library(tarchetypes)

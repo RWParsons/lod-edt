@@ -78,8 +78,8 @@ list(
       tbl_cardiac_assessments = tbl_cardiac_assessments,
       tbl_1 = tbl_1,
       vis_hoslos = vis_hos_los,
-      vis_early_disch_data = vis_early_disch$p_smoothed_data,
-      vis_early_disch_model = vis_early_disch$p_model_preds,
+      vis_early_disch_data = plot_grid(vis_early_disch$p_smoothed_data, vis_early_disch$p_smoothed_data_by_hosp + theme(legend.position = "none")),
+      vis_early_disch_model = plot_grid(vis_early_disch$p_model_preds, vis_early_disch$p_model_preds_by_hosp + theme(legend.position = "none")),
       qnt_eq5d = qnt_eq5d,
       qnt_patient_experience = qnt_patient_experience
     )
