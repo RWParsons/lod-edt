@@ -11,6 +11,7 @@ store_outputs <- function(...) {
       save_dispatch(l_all[i])
     )
   }
+  list.files(here("output"), full.names = TRUE)
 }
 
 save_dispatch <- function(x) {
