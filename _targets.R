@@ -44,12 +44,40 @@ list(
     get_intervention_effects(models)
   ),
   tar_target(
-    vis_early_disch,
-    visualise_outcome(d_clean, models$ep_early_dsch_no_30d_event$m_full_cohort, outcome = "ep_early_dsch_no_30d_event")
+    vis_early_disch_full,
+    visualise_outcome(
+      data = d_clean,
+      model = models$ep_early_dsch_no_30d_event$m_full_cohort,
+      outcome = "ep_early_dsch_no_30d_event",
+      cohort = "full"
+    )
   ),
   tar_target(
-    vis_hoslos,
-    visualise_outcome(d_clean, models$ep_hos_los$m_full_cohort, outcome = "ep_hos_los")
+    vis_early_disch_lod,
+    visualise_outcome(
+      data = d_clean,
+      model = models$ep_early_dsch_no_30d_event$m_lod_cohort,
+      outcome = "ep_early_dsch_no_30d_event",
+      cohort = "lod"
+    )
+  ),
+  tar_target(
+    vis_hoslos_full,
+    visualise_outcome(
+      data = d_clean,
+      model = models$ep_hos_los$m_full_cohort,
+      outcome = "ep_hos_los",
+      cohort = "full"
+    )
+  ),
+  tar_target(
+    vis_hoslos_lod,
+    visualise_outcome(
+      data = d_clean,
+      model = models$ep_hos_los$m_lod_cohort,
+      outcome = "ep_hos_los",
+      cohort = "lod"
+    )
   ),
   tar_target(
     tbl_cardiac_assessments,
@@ -77,21 +105,37 @@ list(
       tbl_intervention_effects = tbl_intervention_effects,
       tbl_cardiac_assessments = tbl_cardiac_assessments,
       tbl_1 = tbl_1,
-      vis_hoslos_data = plot_grid(
-        vis_hoslos$p_smoothed_data,
-        vis_hoslos$p_smoothed_data_by_hosp + theme(legend.position = "none")
+      vis_hoslos_full_data = plot_grid(
+        vis_hoslos_full$p_smoothed_data,
+        vis_hoslos_full$p_smoothed_data_by_hosp + theme(legend.position = "none")
       ),
-      vis_hoslos_model = plot_grid(
-        vis_hoslos$p_model_preds,
-        vis_hoslos$p_model_preds_by_hosp + theme(legend.position = "none")
+      vis_hoslos_full_model = plot_grid(
+        vis_hoslos_full$p_model_preds,
+        vis_hoslos_full$p_model_preds_by_hosp + theme(legend.position = "none")
       ),
-      vis_early_disch_data = plot_grid(
-        vis_early_disch$p_smoothed_data,
-        vis_early_disch$p_smoothed_data_by_hosp + theme(legend.position = "none")
+      vis_early_disch_full_data = plot_grid(
+        vis_early_disch_full$p_smoothed_data,
+        vis_early_disch_full$p_smoothed_data_by_hosp + theme(legend.position = "none")
       ),
-      vis_early_disch_model = plot_grid(
-        vis_early_disch$p_model_preds,
-        vis_early_disch$p_model_preds_by_hosp + theme(legend.position = "none")
+      vis_early_disch_full_model = plot_grid(
+        vis_early_disch_full$p_model_preds,
+        vis_early_disch_full$p_model_preds_by_hosp + theme(legend.position = "none")
+      ),
+      vis_hoslos_lod_data = plot_grid(
+        vis_hoslos_lod$p_smoothed_data,
+        vis_hoslos_lod$p_smoothed_data_by_hosp + theme(legend.position = "none")
+      ),
+      vis_hoslos_lod_model = plot_grid(
+        vis_hoslos_lod$p_model_preds,
+        vis_hoslos_lod$p_model_preds_by_hosp + theme(legend.position = "none")
+      ),
+      vis_early_disch_lod_data = plot_grid(
+        vis_early_disch_lod$p_smoothed_data,
+        vis_early_disch_lod$p_smoothed_data_by_hosp + theme(legend.position = "none")
+      ),
+      vis_early_disch_lod_model = plot_grid(
+        vis_early_disch_lod$p_model_preds,
+        vis_early_disch_lod$p_model_preds_by_hosp + theme(legend.position = "none")
       ),
       qnt_eq5d = qnt_eq5d,
       qnt_patient_experience = qnt_patient_experience

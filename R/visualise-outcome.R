@@ -80,12 +80,35 @@ visualise_outcome <- function(data, model, outcome, cohort = c("full", "lod")) {
     filter(days_since_site_start <= dt_max, days_since_site_start >= dt_min)
 
   pred_frame$preds <- predict(model, newdata = pred_frame, re.form = ~0, type = "response")
+  pred_frame$preds_se <- predict(model, newdata = pred_frame, re.form = ~0, type = "response", se.fit = TRUE)$se.fit
+
+  z <- 1.96
+
+  pred_frame <- pred_frame |>
+    mutate(
+      preds_lwr = preds - preds_se * z,
+      preds_upr = preds + preds_se * z
+    )
+
   pred_frame_by_hosp$preds <- predict(model, newdata = pred_frame_by_hosp, type = "response")
+  pred_frame_by_hosp$preds_se <- predict(model, newdata = pred_frame_by_hosp, type = "response", se.fit = TRUE)$se.fit
+  pred_frame_by_hosp <- pred_frame_by_hosp |>
+    mutate(
+      preds_lwr = preds - preds_se * z,
+      preds_upr = preds + preds_se * z
+    )
 
   p_model_preds <- pred_frame |>
+    filter(intervention == 1 | days_since_site_start < 0) |>
     mutate(intervention = as.factor(intervention)) |>
-    ggplot(aes(days_since_site_start, preds, col = intervention)) +
+    ggplot(aes(days_since_site_start, preds, col = intervention, fill = intervention, ymin = preds_lwr, ymax = preds_upr)) +
+    geom_ribbon(alpha = 0.6) +
     geom_line() +
+    geom_line(
+      data = filter(pred_frame, intervention == 0, days_since_site_start > 0),
+      aes(days_since_site_start, preds),
+      linetype = "dashed"
+    ) +
     theme_bw() +
     geom_vline(xintercept = 0, linetype = "dashed") +
     labs(
@@ -97,6 +120,7 @@ visualise_outcome <- function(data, model, outcome, cohort = c("full", "lod")) {
     mutate(intervention = as.factor(intervention)) |>
     ggplot(aes(days_since_site_start, preds, col = intervention)) +
     geom_line() +
+    geom_ribbon(alpha = 0.6, aes(fill = intervention, ymin = preds_lwr, ymax = preds_upr)) +
     geom_smooth(data = d_first_presentation, aes(days_since_site_start, ep_var, fill = intervention), col = "black") +
     theme_bw() +
     geom_vline(xintercept = 0, linetype = "dashed") +
