@@ -105,38 +105,14 @@ list(
       tbl_intervention_effects = tbl_intervention_effects,
       tbl_cardiac_assessments = tbl_cardiac_assessments,
       tbl_1 = tbl_1,
-      vis_hoslos_full_data = plot_grid(
-        vis_hoslos_full$p_smoothed_data,
-        vis_hoslos_full$p_smoothed_data_by_hosp + theme(legend.position = "none")
-      ),
-      vis_hoslos_full_model = plot_grid(
-        vis_hoslos_full$p_model_preds,
-        vis_hoslos_full$p_model_preds_by_hosp + theme(legend.position = "none")
-      ),
-      vis_early_disch_full_data = plot_grid(
-        vis_early_disch_full$p_smoothed_data,
-        vis_early_disch_full$p_smoothed_data_by_hosp + theme(legend.position = "none")
-      ),
-      vis_early_disch_full_model = plot_grid(
-        vis_early_disch_full$p_model_preds,
-        vis_early_disch_full$p_model_preds_by_hosp + theme(legend.position = "none")
-      ),
-      vis_hoslos_lod_data = plot_grid(
-        vis_hoslos_lod$p_smoothed_data,
-        vis_hoslos_lod$p_smoothed_data_by_hosp + theme(legend.position = "none")
-      ),
-      vis_hoslos_lod_model = plot_grid(
-        vis_hoslos_lod$p_model_preds,
-        vis_hoslos_lod$p_model_preds_by_hosp + theme(legend.position = "none")
-      ),
-      vis_early_disch_lod_data = plot_grid(
-        vis_early_disch_lod$p_smoothed_data,
-        vis_early_disch_lod$p_smoothed_data_by_hosp + theme(legend.position = "none")
-      ),
-      vis_early_disch_lod_model = plot_grid(
-        vis_early_disch_lod$p_model_preds,
-        vis_early_disch_lod$p_model_preds_by_hosp + theme(legend.position = "none")
-      ),
+      vis_hoslos_full_data = combine_plots(vis_hoslos_full, which_pair = "smoothed"),
+      vis_hoslos_full_model = combine_plots(vis_hoslos_full, which_pair = "model"),
+      vis_early_disch_full_data = combine_plots(vis_early_disch_full, which_pair = "smoothed"),
+      vis_early_disch_full_model = combine_plots(vis_early_disch_full, which_pair = "model"),
+      vis_hoslos_lod_data = combine_plots(vis_hoslos_lod, which_pair = "smoothed"),
+      vis_hoslos_lod_model = combine_plots(vis_hoslos_lod, which_pair = "model"),
+      vis_early_disch_lod_data = combine_plots(vis_early_disch_lod, which_pair = "smoothed"),
+      vis_early_disch_lod_model = combine_plots(vis_early_disch_lod, which_pair = "model"),
       qnt_eq5d = qnt_eq5d,
       qnt_patient_experience = qnt_patient_experience
     ),

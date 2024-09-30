@@ -144,6 +144,22 @@ visualise_outcome <- function(data, model, outcome, cohort = c("full", "lod")) {
   plotlist
 }
 
+combine_plots <- function(p_set, which_pair = c("smoothed", "model")) {
+  which_pair <- match.arg(which_pair)
+
+  if (which_pair == "smoothed") {
+    p1 <- p_set$p_smoothed_data
+    p2 <- p_set$p_smoothed_data_by_hosp
+  } else {
+    p1 <- p_set$p_model_preds
+    p2 <- p_set$p_model_preds_by_hosp
+  }
+
+  p2 <- p2 + theme(legend.position = "none")
+
+  plot_grid(p1, p2)
+}
+
 get_ep_lab <- function(outcome) {
   case_when(
     outcome == "ep_early_dsch_no_30d_event" ~ "Early discharge (<4 hours) without 30-day cardiac event (%)",
