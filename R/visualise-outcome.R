@@ -163,6 +163,7 @@ combine_plots <- function(p_set, which_pair = c("smoothed", "model")) {
 get_ep_lab <- function(outcome) {
   case_when(
     outcome == "ep_early_dsch_no_30d_event" ~ "Early discharge (<4 hours) without 30-day cardiac event (%)",
+    outcome == "ep_hos_los" ~ "Hospital length of stay (hours)",
     .default = "outcome var label"
   )
 }
