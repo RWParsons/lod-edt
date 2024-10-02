@@ -25,5 +25,5 @@ save_tbl <- function(x, name) {
 }
 
 save_plot <- function(x, name) {
-  ggsave(plot = x, filename = glue("{name}.jpeg"), height = 6, width = 10)
+  ggsave(plot = x, filename = glue("{name}.png"), height = 6, width = 10)
 }
