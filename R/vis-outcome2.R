@@ -3,8 +3,6 @@ visualise_outcome2 <- function(data, model, outcome, cohort = c("full", "lod")) 
   ep_lab <- get_ep_lab(outcome)
   outcome_is_binary <- is_binary(data[[outcome]])
 
-  browser()
-
   d_first_presentation <- data |>
     filter(presentation_no == 1) |>
     rename(ep_var := !!rlang::sym(outcome))
@@ -71,7 +69,7 @@ visualise_outcome2 <- function(data, model, outcome, cohort = c("full", "lod")) 
     scale_fill_manual(labels = p_utils$labels, values = p_utils$colours),
     labs(
       y = glue("{ep_lab} (model predictions)"),
-      x = "days since site start"
+      x = "Days since site start"
     ),
     geom_vline(xintercept = 0, linetype = "dashed")
   )
@@ -81,21 +79,21 @@ visualise_outcome2 <- function(data, model, outcome, cohort = c("full", "lod")) 
     ggplot(aes(days_since_site_start, preds, col = intervention, fill = intervention, ymin = preds_lwr, ymax = preds_upr)) +
     geom_ribbon(alpha = 0.6) +
     geom_line() +
-    geom_line(
-      data = filter(pred_frame, intervention == "0", days_since_site_start > 0),
-      aes(days_since_site_start, preds),
-      linetype = "dashed"
-    ) +
+    # geom_line(
+    #   data = filter(pred_frame, intervention == "0", days_since_site_start > 0),
+    #   aes(days_since_site_start, preds),
+    #   linetype = "dashed"
+    # ) +
     p_common
 
   p_model_preds_by_hosp <- pred_frame_by_hosp |>
     filter(!(intervention == "0" & days_since_site_start > 0)) |>
     ggplot(aes(days_since_site_start, preds, col = intervention)) +
     geom_line() +
-    geom_line(
-      data = filter(pred_frame_by_hosp, intervention == "0", days_since_site_start > 0),
-      aes(days_since_site_start, preds), col = "red", linetype = "dashed"
-    ) +
+    # geom_line(
+    #   data = filter(pred_frame_by_hosp, intervention == "0", days_since_site_start > 0),
+    #   aes(days_since_site_start, preds), col = "red", linetype = "dashed"
+    # ) +
     geom_ribbon(alpha = 0.6, aes(fill = intervention, ymin = preds_lwr, ymax = preds_upr)) +
     p_common +
     facet_wrap(~hospital_id)

@@ -26,7 +26,11 @@ graph LR
   end
   subgraph Graph
     direction LR
+    x13b8365dcba4324c(["d_clean"]):::uptodate --> x892cfa0db67b8ac9(["vis_hoslos_lod_new"]):::uptodate
+    xaca4bed467a54ff1(["models"]):::uptodate --> x892cfa0db67b8ac9(["vis_hoslos_lod_new"]):::uptodate
     x0d01c84c9424364d(["data_file"]):::uptodate --> x56afa2603fe1d037(["d_raw"]):::uptodate
+    x13b8365dcba4324c(["d_clean"]):::uptodate --> xa49fca9999eff519(["vis_early_disch_full_new"]):::uptodate
+    xaca4bed467a54ff1(["models"]):::uptodate --> xa49fca9999eff519(["vis_early_disch_full_new"]):::uptodate
     x13b8365dcba4324c(["d_clean"]):::uptodate --> x5ba341b1daa1fc45["models_iter"]:::uptodate
     x979e976bb4cbf5ad(["endpoint_varnames"]):::uptodate --> x5ba341b1daa1fc45["models_iter"]:::uptodate
     x13b8365dcba4324c(["d_clean"]):::uptodate --> x979e976bb4cbf5ad(["endpoint_varnames"]):::uptodate
@@ -43,10 +47,8 @@ graph LR
     xd34032695f0ff868(["tbl_1"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
     xa2439dbf9eab4d88(["tbl_cardiac_assessments"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
     x1b37a08095af01ef(["tbl_intervention_effects"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
-    x52f8121952cb8115(["vis_early_disch_full"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
-    x499e10682e6f581e(["vis_early_disch_lod"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
-    x8c66d753e3a50a0e(["vis_hoslos_full"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
-    x7d0e04e515a3eb8e(["vis_hoslos_lod"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
+    xa49fca9999eff519(["vis_early_disch_full_new"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
+    x892cfa0db67b8ac9(["vis_hoslos_lod_new"]):::uptodate --> xf2656b6bb75dfabe(["outputs"]):::uptodate
     xaca4bed467a54ff1(["models"]):::uptodate --> x1b37a08095af01ef(["tbl_intervention_effects"]):::uptodate
     x13b8365dcba4324c(["d_clean"]):::uptodate --> xd979d4bdf1b06554(["qnt_patient_experience"]):::uptodate
     x13b8365dcba4324c(["d_clean"]):::uptodate --> xd34032695f0ff868(["tbl_1"]):::uptodate
