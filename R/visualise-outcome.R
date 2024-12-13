@@ -2,15 +2,15 @@ visualise_outcome <- function(data, model, outcome, cohort = c("full", "lod")) {
   cohort <- match.arg(cohort)
   ep_lab <- get_ep_lab(outcome)
   outcome_is_binary <- is_binary(data[[outcome]])
-  
+
   d_first_presentation <- data |>
     filter(presentation_no == 1) |>
     rename(ep_var := !!rlang::sym(outcome))
-  
+
   if (cohort == "lod") {
     d_first_presentation <- d_first_presentation |> filter(troponin <= get_troponin_lod())
   }
-  
+
   pred_frame <- tibble(days_since_site_start = seq(
     min(d_first_presentation$days_since_site_start),
     max(d_first_presentation$days_since_site_start),
@@ -29,22 +29,22 @@ visualise_outcome <- function(data, model, outcome, cohort = c("full", "lod")) {
       )
     })() |>
     mutate(intervention = as.factor(intervention))
-  
+
   pred_frame$preds <- predict(model, newdata = pred_frame, re.form = ~0, type = "response")
   pred_frame$preds_se <- predict(model, newdata = pred_frame, re.form = ~0, type = "response", se.fit = TRUE)$se.fit
-  
+
   z <- 1.96
-  
+
   pred_frame_by_hosp <- map(unique(d_first_presentation$hospital_id), ~ pred_frame |> mutate(hospital_id = .x)) |>
     bind_rows()
-  
+
   pred_frame <- pred_frame |>
     mutate(
       preds_lwr = preds - preds_se * z,
       preds_upr = preds + preds_se * z,
       intervention = as.character(intervention)
     )
-  
+
   pred_frame_by_hosp$preds <- predict(model, newdata = pred_frame_by_hosp, type = "response")
   pred_frame_by_hosp$preds_se <- predict(model, newdata = pred_frame_by_hosp, type = "response", se.fit = TRUE)$se.fit
   pred_frame_by_hosp <- pred_frame_by_hosp |>
@@ -54,13 +54,13 @@ visualise_outcome <- function(data, model, outcome, cohort = c("full", "lod")) {
       intervention = as.character(intervention),
       hospital_id = as.numeric(as.factor(hospital_id))
     )
-  
+
   p_utils <- list(
     values = c("0", "1"),
     colours = c("navyblue", "#b50f04"),
     labels = c("Standard care", "Intervention")
   )
-  
+
   p_common <- list(
     scale_y_continuous(limits = c(0, NA)),
     theme_bw(),
@@ -74,14 +74,14 @@ visualise_outcome <- function(data, model, outcome, cohort = c("full", "lod")) {
     ),
     geom_vline(xintercept = 0, linetype = "dashed")
   )
-  
+
   p_model_preds <- pred_frame |>
     filter(intervention == "1" | days_since_site_start < 0) |>
     ggplot(aes(days_since_site_start, preds, col = intervention, fill = intervention, ymin = preds_lwr, ymax = preds_upr)) +
     geom_ribbon(alpha = 0.6) +
     geom_line() +
     p_common
-  
+
   p_model_preds
   p_model_preds_by_hosp <- pred_frame_by_hosp |>
     filter(!(intervention == "0" & days_since_site_start > 0)) |>
@@ -90,12 +90,12 @@ visualise_outcome <- function(data, model, outcome, cohort = c("full", "lod")) {
     geom_ribbon(alpha = 0.6, aes(fill = intervention, ymin = preds_lwr, ymax = preds_upr)) +
     p_common +
     facet_wrap(~hospital_id)
-  
+
   plotlist <- list(
     p_model_preds = p_model_preds,
     p_model_preds_by_hosp = p_model_preds_by_hosp
   )
-  
+
   if (outcome_is_binary) {
     plotlist <- plotlist |>
       map(~ .x + scale_y_continuous(labels = scales::label_percent(), limits = c(0, NA)))

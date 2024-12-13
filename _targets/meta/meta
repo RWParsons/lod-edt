@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|84327982b2583469|||||||||||||||
+.Random.seed|object|4ce03fadbfc7f3fe|||||||||||||||
 add_days_since_site_start|function|a067b9762aa45794|||||||||||||||
 analyse_primary_ep|function|ac7eba803017375f|||||||||||||||
 bs|function|248c7f8909e45602|||||||||||||||
@@ -48,15 +48,8 @@ tbl_1|stem|1a67385fa0421b8c|c5b0f1e29afe3837|ddc3b5a8d1b959c5|-840015973||t20034
 tbl_cardiac_assessments|stem|c9ff8478eedadcca|b2dc486822dcf67b|851070f125d37724|-104038283||t20034.1734708269s|af1c65b68546eb9e|650|rds|local|vector|||0.688||
 tbl_format_n_perc|function|d9c9900ee5401b60|||||||||||||||
 tbl_intervention_effects|stem|23409768ed13436d|20ec4da0d0fa4e6d|d197a8ea302cdf57|1548485281||t20034.1745187807s|9819fb286e84d550|1104|rds|local|vector|||34.141||
-vis_early_disch|stem|96ea26725e968cec|f7c275615e44e2d3|858c820a35118870|-1987087722||t19991.2753872315s|d0538d7b6cf4bf39|7538304|rds|local|vector|||1.688||
-vis_early_disch_full|stem|eb237726eacca110|2a6ad40939be60ba|4b5b6688044be2a6|1663894216||t20034.1742700198s|241bf1001f9a29a4|7603186|rds|local|vector|||8.969||
 vis_early_disch_full_new|stem|9ca451c1cdf0d52d|2a6ad40939be60ba|3c02524bb456ddf9|-2076213861||t20070.0040927106s|d14b73e3381eaff5|3750808|rds|local|vector|||11.172||
-vis_early_disch_lod|stem|d4130b3dbd42b699|bf4103c1e5f8e91f|4b5b6688044be2a6|-1650494865||t20034.1743567872s|36554b806b086c84|4369454|rds|local|vector|||3.172||
 vis_eq5d|stem|5041875741665b2f|1d4841140a49e4ae|7517f2e33034e11b|1388869378||t20034.1734603568s|3888921b28776525|510749|rds|local|vector|||0.047||
-vis_hos_los|stem|15ba33d2f49d8319|8f056ce47646e2e4|eb2fa1819b75c7b0|-785057180||t19990.168446314s||1346256|rds|local|vector|||1.672||could not find function visualise_hos_los
-vis_hoslos|stem|db1368808c4c7ecd|324afc09d7e7f15c|858c820a35118870|-1125074418||t19991.275413155s|b52e36b0d6ac2306|7090134|rds|local|vector|||2.031|Predicting new random effect levels for terms 0  days_since_site_start  interventionhospital_idDisable this warning with allow.new.levelsTRUE|
-vis_hoslos_full|stem|b8c4acf7085268c7|3d5886573740fdde|4b5b6688044be2a6|750573788||t20034.1744313763s|e6217da082d85df3|7175190|rds|local|vector|||22.781|Predicting new random effect levels for terms 0  days_since_site_start  interventionhospital_idDisable this warning with allow.new.levelsTRUE. Predicting new random effect levels for terms 0  days_since_site_start  interventionhospital_idDisable this warning with allow.new.levelsTRUE|
-vis_hoslos_lod|stem|c192405e1a0a5a27|6fe14acd7b1680e3|4b5b6688044be2a6|1897449113||t20034.1742264147s|21b465a1dba3e25f|3924871|rds|local|vector|||6.563|Predicting new random effect levels for terms 0  days_since_site_start  interventionhospital_idDisable this warning with allow.new.levelsTRUE. Predicting new random effect levels for terms 0  days_since_site_start  interventionhospital_idDisable this warning with allow.new.levelsTRUE|
 vis_hoslos_lod_new|stem|086385c2241bcf92|6fe14acd7b1680e3|3c02524bb456ddf9|-231306023||t20070.004075347s|8d314a8ab71959ee|2986414|rds|local|vector|||10.079|Predicting new random effect levels for terms 0  days_since_site_start  interventionhospital_idDisable this warning with allow.new.levelsTRUE. Predicting new random effect levels for terms 0  days_since_site_start  interventionhospital_idDisable this warning with allow.new.levelsTRUE|
 visualise_early_disch|function|1466e1c63c326ede|||||||||||||||
 visualise_eq5d|function|6ac6a87fb1864862|||||||||||||||
