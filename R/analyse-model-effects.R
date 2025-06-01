@@ -4,6 +4,8 @@ get_intervention_effects <- function(models) {
     unlist() |>
     unname()
 
+  models[[1]]$m_lod_cohort
+
   # m <- models[[2]]$m_full_cohort
   # get_ranef_summary(m)
 
@@ -13,7 +15,7 @@ get_intervention_effects <- function(models) {
       mutate(
         formula = Reduce(paste, deparse(.x$m_full_cohort$call$formula)),
         dispersion_parameter = sigma(.x$m_full_cohort)
-      )# |> bind_cols(get_ranef_summary(.x$m_full_cohort))
+      ) # |> bind_cols(get_ranef_summary(.x$m_full_cohort))
   )
   lod_cohort_effects <- map(
     models,
@@ -21,7 +23,7 @@ get_intervention_effects <- function(models) {
       mutate(
         formula = Reduce(paste, deparse(.x$m_lod_cohort$call$formula)),
         dispersion_parameter = sigma(.x$m_lod_cohort)
-      )# |> bind_cols(get_ranef_summary(.x$m_lod_cohort))
+      ) # |> bind_cols(get_ranef_summary(.x$m_lod_cohort))
   )
 
   full_cohort_effects_tbl <- map(

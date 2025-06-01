@@ -93,7 +93,8 @@ list(
       tbl_1 = tbl_1,
       vis_hoslos_lod_model = vis_hoslos_lod_new$p_model_preds,
       vis_early_disch_full_model = vis_early_disch_full_new$p_model_preds,
-      vis_hoslos_km = vis_hoslos_km,
+      vis_hoslos_km_full_cohort = vis_hoslos_km$p_full_cohort,
+      vis_hoslos_km_lod_cohort = vis_hoslos_km$p_lod_cohort,
       qnt_eq5d = qnt_eq5d,
       qnt_patient_experience = qnt_patient_experience
     ),

@@ -10,3 +10,5 @@ suppressPackageStartupMessages({
   library(survival)
   library(here)
 })
+
+style_dir <- styler::style_dir

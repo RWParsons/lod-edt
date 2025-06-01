@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|03f2303597f2f9e1|||||||||||||||
+.Random.seed|object|ec4a1937bfc05254|||||||||||||||
 add_days_since_site_start|function|a067b9762aa45794|||||||||||||||
 analyse_primary_ep|function|ac7eba803017375f|||||||||||||||
 bs|function|248c7f8909e45602|||||||||||||||
@@ -18,15 +18,16 @@ get_disp|function|bfb4389fc732e248|||||||||||||||
 get_ep_lab|function|71c803e053ce474d|||||||||||||||
 get_family|function|295abed69ebff9c5|||||||||||||||
 get_formula|function|a35b772ddc34699b|||||||||||||||
-get_intervention_effects|function|80ee3dd28a4fc61d|||||||||||||||
+get_intervention_effects|function|bb2241a003f26ae2|||||||||||||||
 get_iqr_cell|function|3c0af7f4b2401242|||||||||||||||
 get_qnt_eq5d|function|2d1659ca9c15df87|||||||||||||||
 get_qnt_patient_experience|function|f0902a997da3bab6|||||||||||||||
-get_ranef_summary|function|7ef15bf03a2ec8a4|||||||||||||||
+get_ranef_summary|function|1d931bfda2bb3ff9|||||||||||||||
 get_troponin_lod|function|570e28f5f26e3122|||||||||||||||
 group_models|function|26407210d6c932d9|||||||||||||||
 impute_missing_data|function|81a8f346c969af4c|||||||||||||||
 is_binary|function|12fd7269b5a018f4|||||||||||||||
+make_hoslos_km|function|a3f5aee653088424|||||||||||||||
 make_table_1|function|0d467fc4e8caf1cb|||||||||||||||
 mice|function|3799bb645922aa23|||||||||||||||
 models|stem|3390aff9828bdea9|e1bf1cf9d18588e3|b948b17847696389|-1655822660||t20034.1741005212s|c9fa68451dee7182|10224396|rds|local|vector|||0||
@@ -35,7 +36,7 @@ models_iter_12f3b4f6b67b5669|branch|f0a631a2ac4b912f|3229f33a5b49ae14|ab10b16e92
 models_iter_3bcdb6a9aebd7165|branch|9d2762fff56cc3ff|3229f33a5b49ae14|ab10b16e9289a4e6|133656555||t20034.1737885691s|0033ab30ec52cce9|2760827|rds|local|list|models_iter||24.828|Model convergence problem nonpositivedefinite Hessian matrix. See vignettetroubleshooting. Model convergence problem singular convergence 7. See vignettetroubleshooting, helpdiagnose. Model convergence problem nonpositivedefinite Hessian matrix. See vignettetroubleshooting. Model convergence problem false convergence 8. See vignettetroubleshooting, helpdiagnose|
 models_iter_e628a91bca14d868|branch|baac9d16b4c3c9c5|3229f33a5b49ae14|ab10b16e9289a4e6|-1190086691||t20034.1740632668s|5e0661dbd6ac92f9|2408257|rds|local|list|models_iter||49.031||
 models_iter_f48c18d0e892f6f5|branch|4a98f8299321e21c|3229f33a5b49ae14|ab10b16e9289a4e6|-464799103||t20034.1735476841s|e56cdcdb93dab8f0|2344639|rds|local|list|models_iter||6.109|Model convergence problem nonpositivedefinite Hessian matrix. See vignettetroubleshooting. Model convergence problem singular convergence 7. See vignettetroubleshooting, helpdiagnose. Model convergence problem nonpositivedefinite Hessian matrix. See vignettetroubleshooting|
-outputs|stem|f4ca4a9ab3e33e07|8c49680d20d3600e|ccf037e116bc0702|-87300777|C:/Users/parsonrr/Documents/R_projects/lod-edt/output/qnt_eq5d.csv*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/qnt_patient_experience.csv*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/tbl_1.csv*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/tbl_cardiac_assessments.csv*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/tbl_intervention_effects.csv*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/vis_early_disch_full_model.png*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/vis_hoslos_km.png*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/vis_hoslos_lod_model.png|t20240.1949412518s|27e27cbb59933375|250560|file|local|vector|||1.312|1m22mRemoved 431 rows containing missing values or values outside the scale rangegeom_step.|
+outputs|stem|53c578df19c99218|e9fdd81832516171|8487f2f9f91792af|-87300777|C:/Users/parsonrr/Documents/R_projects/lod-edt/output/qnt_eq5d.csv*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/qnt_patient_experience.csv*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/tbl_1.csv*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/tbl_cardiac_assessments.csv*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/tbl_intervention_effects.csv*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/vis_early_disch_full_model.png*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/vis_hoslos_km_full_cohort.png*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/vis_hoslos_km_lod_cohort.png*C:/Users/parsonrr/Documents/R_projects/lod-edt/output/vis_hoslos_lod_model.png|t20240.9737308266s|8adc158abeca3254|317761|file|local|vector|||1.688|1m22mRemoved 431 rows containing missing values or values outside the scale rangegeom_step.. 1m22mRemoved 25 rows containing missing values or values outside the scale rangegeom_step.|
 prep_eq5d_data|function|838f6d7fbc0dbe4f|||||||||||||||
 qnt_eq5d|stem|a9f57f0f67445105|60d31acd9ee6596f|8d14035a4420b1f7|169920332||t20034.1734606852s|ce6093ee2969a9f6|392|rds|local|vector|||0.078||
 qnt_patient_experience|stem|ba8e76621867fedd|6555f10daebc53b6|cbfb51a7c4de8571|1429088306||t20034.173461785s|24c2ba8d4fe0ab05|322|rds|local|vector|||0.078||
@@ -44,20 +45,21 @@ save_dispatch|function|7181455ef39271fd|||||||||||||||
 save_plot|function|f23dc03e62b8562c|||||||||||||||
 save_tbl|function|c6b79c9ce5a57ca8|||||||||||||||
 store_outputs|function|efbc84008e7a5ed1|||||||||||||||
+style_dir|function|3c6e50e257e34dbf|||||||||||||||
 summarize_by_iqr|function|b671aede89c23a2a|||||||||||||||
 summarize_by_n_percent|function|2d4d02a40c255d3f|||||||||||||||
 tbl_1|stem|1a67385fa0421b8c|c5b0f1e29afe3837|ddc3b5a8d1b959c5|-840015973||t20034.1734569825s|1a66660339879803|1250|rds|local|vector|||2.125||
 tbl_cardiac_assessments|stem|c9ff8478eedadcca|b2dc486822dcf67b|851070f125d37724|-104038283||t20034.1734708269s|af1c65b68546eb9e|650|rds|local|vector|||0.688||
 tbl_format_n_perc|function|d9c9900ee5401b60|||||||||||||||
-tbl_intervention_effects|stem|23409768ed13436d|20ec4da0d0fa4e6d|4bb67732f90f73e3|1548485281||t20034.1745187807s||1104|rds|local|vector|||27.422|package ggfortify was built under R version 4.4.3. 1m22mThe x argument of as_tibble.matrix must have unique column names if.name_repair is omitted as of tibble 2.0.0.36mℹ39m Using compatibility .name_repair.|1m22m36mℹ39m In argument outcome  outcome_names.1mCaused by error22m1m22m33m39m outcome must be size 13 or 1, not 4.
+tbl_intervention_effects|stem|87d37e179cc4f4b5|20ec4da0d0fa4e6d|d7ca26bf0aea3274|1548485281||t20240.9736946629s|f959b2311163ff79|1147|rds|local|vector|||31.5|package ggfortify was built under R version 4.4.3|
 vis_early_disch_full_new|stem|9ca451c1cdf0d52d|2a6ad40939be60ba|3c02524bb456ddf9|-2076213861||t20070.0040927106s|d14b73e3381eaff5|3750808|rds|local|vector|||11.172||
 vis_eq5d|stem|5041875741665b2f|1d4841140a49e4ae|7517f2e33034e11b|1388869378||t20034.1734603568s|3888921b28776525|510749|rds|local|vector|||0.047||
-vis_hoslos_km|stem|aaf48f6126fe5b9b|89070a78f17e8364|8e8dff10d69783bd|-866642799||t20240.1949088868s|4331d4f6ddb45e2e|1577848|rds|local|vector|||1.891|package ggfortify was built under R version 4.4.3|
+vis_hoslos_km|stem|aad00858790d19e5|89070a78f17e8364|f2aa923ad1187a77|-866642799||t20240.9733269955s|d2dc01426ac153b9|1313400|rds|local|vector|||2.313|package ggfortify was built under R version 4.4.3|
 vis_hoslos_lod_new|stem|086385c2241bcf92|6fe14acd7b1680e3|3c02524bb456ddf9|-231306023||t20070.004075347s|8d314a8ab71959ee|2986414|rds|local|vector|||10.079|Predicting new random effect levels for terms 0  days_since_site_start  interventionhospital_idDisable this warning with allow.new.levelsTRUE. Predicting new random effect levels for terms 0  days_since_site_start  interventionhospital_idDisable this warning with allow.new.levelsTRUE|
 visualise_early_disch|function|1466e1c63c326ede|||||||||||||||
 visualise_eq5d|function|6ac6a87fb1864862|||||||||||||||
 visualise_hos_los|function|f9aa1b24229fc506|||||||||||||||
-visualise_hoslos_km|function|48a492b2444a4bdf|||||||||||||||
+visualise_hoslos_km|function|d985ed136b052f18|||||||||||||||
 visualise_missingness|function|d4f8ca6c78a9f854|||||||||||||||
 visualise_outcome|function|5cc85b4ae3399d23|||||||||||||||
 visualise_outcome2|function|699c43acf5f6e4b0|||||||||||||||
