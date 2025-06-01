@@ -64,6 +64,10 @@ list(
     make_table_1(d_clean)
   ),
   tar_target(
+    vis_hoslos_km,
+    visualise_hoslos_km(d_clean)
+  ),
+  tar_target(
     vis_hoslos_lod_new,
     visualise_outcome(
       data = d_clean,
@@ -89,6 +93,7 @@ list(
       tbl_1 = tbl_1,
       vis_hoslos_lod_model = vis_hoslos_lod_new$p_model_preds,
       vis_early_disch_full_model = vis_early_disch_full_new$p_model_preds,
+      vis_hoslos_km = vis_hoslos_km,
       qnt_eq5d = qnt_eq5d,
       qnt_patient_experience = qnt_patient_experience
     ),
