@@ -1,0 +1,38 @@
+ Family: poisson  ( log )
+Formula:          
+ep_6month_readmission_n ~ intervention * days_since_site_start +  
+    bs(pt_age) + pt_sex + (intervention * days_since_site_start |  
+    hospital_id)
+Data: data_first_presentation_low_trop
+
+     AIC      BIC   logLik deviance df.resid 
+      NA       NA       NA       NA     2560 
+
+Random effects:
+
+Conditional model:
+ Groups      Name                                Variance  Std.Dev.  Corr 
+ hospital_id (Intercept)                         1.495e-03 0.0386698      
+             intervention1                       3.151e-02 0.1775172 -0.98
+             days_since_site_start               1.001e-06 0.0010006  0.98
+             intervention1:days_since_site_start 5.245e-10 0.0000229  0.08
+             
+             
+             
+ -1.00       
+ -0.09  0.06 
+Number of obs: 2579, groups:  hospital_id, 4
+
+Conditional model:
+                                     Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                         -1.925919   0.271272  -7.100 1.25e-12 ***
+intervention1                        0.712079   0.249730   2.851  0.00435 ** 
+days_since_site_start               -0.012933   0.002467  -5.242 1.59e-07 ***
+bs(pt_age)1                         -1.831072   0.621719  -2.945  0.00323 ** 
+bs(pt_age)2                          1.666465   0.610813   2.728  0.00637 ** 
+bs(pt_age)3                         -2.605463   0.821353  -3.172  0.00151 ** 
+pt_sex2                             -0.215969   0.090146  -2.396  0.01659 *  
+pt_sex3                              0.426066   0.585012   0.728  0.46643    
+intervention1:days_since_site_start  0.014766   0.003117   4.737 2.17e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

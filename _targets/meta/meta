@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|ec4a1937bfc05254|||||||||||||||
+.Random.seed|object|d9fcd3274816169e|||||||||||||||
 add_days_since_site_start|function|a067b9762aa45794|||||||||||||||
 analyse_primary_ep|function|ac7eba803017375f|||||||||||||||
 bs|function|248c7f8909e45602|||||||||||||||
@@ -30,6 +30,7 @@ is_binary|function|12fd7269b5a018f4|||||||||||||||
 make_hoslos_km|function|a3f5aee653088424|||||||||||||||
 make_table_1|function|0d467fc4e8caf1cb|||||||||||||||
 mice|function|3799bb645922aa23|||||||||||||||
+model_summaries|stem|e91e53b5c4cd7f20|c6b4fe86da24de2f|7a6176c9951755c7|-583592585||t20240.9891282247s|948ebae6388656f3|51|rds|local|vector|||1.797|package ggfortify was built under R version 4.4.3|
 models|stem|3390aff9828bdea9|e1bf1cf9d18588e3|b948b17847696389|-1655822660||t20034.1741005212s|c9fa68451dee7182|10224396|rds|local|vector|||0||
 models_iter|pattern|dcb038f93029dea5|3229f33a5b49ae14||-273965463||||10256357|rds|local|list||models_iter_e628a91bca14d868*models_iter_3bcdb6a9aebd7165*models_iter_f48c18d0e892f6f5*models_iter_12f3b4f6b67b5669|102.656||
 models_iter_12f3b4f6b67b5669|branch|f0a631a2ac4b912f|3229f33a5b49ae14|ab10b16e9289a4e6|726721819||t20034.1737669511s|a4a84be9d47bc1f5|2742634|rds|local|list|models_iter||22.688|NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. NANaN function evaluation. Model convergence problem nonpositivedefinite Hessian matrix. See vignettetroubleshooting. Model convergence problem false convergence 8. See vignettetroubleshooting, helpdiagnose|
@@ -42,6 +43,7 @@ qnt_eq5d|stem|a9f57f0f67445105|60d31acd9ee6596f|8d14035a4420b1f7|169920332||t200
 qnt_patient_experience|stem|ba8e76621867fedd|6555f10daebc53b6|cbfb51a7c4de8571|1429088306||t20034.173461785s|24c2ba8d4fe0ab05|322|rds|local|vector|||0.078||
 read_data|function|acb56eb6375d12eb|||||||||||||||
 save_dispatch|function|7181455ef39271fd|||||||||||||||
+save_model_summaries|function|539a7b9f5faa282e|||||||||||||||
 save_plot|function|f23dc03e62b8562c|||||||||||||||
 save_tbl|function|c6b79c9ce5a57ca8|||||||||||||||
 store_outputs|function|efbc84008e7a5ed1|||||||||||||||

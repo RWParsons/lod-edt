@@ -1,0 +1,31 @@
+ Family: nbinom1  ( log )
+Formula:          
+ep_hos_los ~ intervention * days_since_site_start + bs(pt_age) +  
+    pt_sex + (0 + days_since_site_start | intervention:hospital_id)
+Data: data_first_presentation
+
+     AIC      BIC   logLik deviance df.resid 
+ 90527.3  90606.5 -45252.6  90505.3     9932 
+
+Random effects:
+
+Conditional model:
+ Groups                   Name                  Variance  Std.Dev. 
+ intervention:hospital_id days_since_site_start 9.703e-07 0.0009851
+Number of obs: 9943, groups:  intervention:hospital_id, 8
+
+Dispersion parameter for nbinom1 family (): 66.1 
+
+Conditional model:
+                                      Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                          3.3884876  0.0651368   52.02  < 2e-16 ***
+intervention1                       -0.0577957  0.0444307   -1.30    0.193    
+days_since_site_start               -0.0002850  0.0007239   -0.39    0.694    
+bs(pt_age)1                         -0.0182605  0.1456532   -0.13    0.900    
+bs(pt_age)2                          0.6263138  0.0956723    6.55 5.89e-11 ***
+bs(pt_age)3                          1.1261126  0.1229370    9.16  < 2e-16 ***
+pt_sex2                             -0.0806200  0.0178027   -4.53 5.94e-06 ***
+pt_sex3                             -0.0751407  0.1991277   -0.38    0.706    
+intervention1:days_since_site_start  0.0001674  0.0010404    0.16    0.872    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

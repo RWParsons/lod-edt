@@ -40,6 +40,10 @@ list(
     group_models(models_iter)
   ),
   tar_target(
+    model_summaries,
+    save_model_summaries(models)
+  ),
+  tar_target(
     tbl_intervention_effects,
     get_intervention_effects(models)
   ),

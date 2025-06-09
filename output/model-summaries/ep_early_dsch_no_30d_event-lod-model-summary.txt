@@ -1,0 +1,38 @@
+ Family: binomial  ( logit )
+Formula:          
+ep_early_dsch_no_30d_event ~ intervention * days_since_site_start +  
+    bs(pt_age) + pt_sex + (intervention * days_since_site_start |  
+    hospital_id)
+Data: data_first_presentation_low_trop
+
+     AIC      BIC   logLik deviance df.resid 
+      NA       NA       NA       NA     2560 
+
+Random effects:
+
+Conditional model:
+ Groups      Name                                Variance  Std.Dev. Corr       
+ hospital_id (Intercept)                         8.571e-01 0.925809            
+             intervention1                       2.038e-01 0.451425 -0.96      
+             days_since_site_start               4.453e-05 0.006673  1.00 -0.98
+             intervention1:days_since_site_start 6.753e-05 0.008217 -0.86  0.68
+       
+       
+       
+       
+ -0.81 
+Number of obs: 2579, groups:  hospital_id, 4
+
+Conditional model:
+                                     Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                          0.339838   0.556210   0.611 0.541207    
+intervention1                        0.592761   0.336628   1.761 0.078259 .  
+days_since_site_start                0.006669   0.004685   1.424 0.154565    
+bs(pt_age)1                         -1.309672   0.638629  -2.051 0.040291 *  
+bs(pt_age)2                         -0.700520   0.585593  -1.196 0.231596    
+bs(pt_age)3                         -2.978445   0.777772  -3.829 0.000128 ***
+pt_sex2                             -0.243029   0.093522  -2.599 0.009360 ** 
+pt_sex3                             -0.222516   0.892596  -0.249 0.803136    
+intervention1:days_since_site_start -0.004149   0.005856  -0.709 0.478631    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
